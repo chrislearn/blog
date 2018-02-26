@@ -1,0 +1,3 @@
+[submodule "site/themes/hugo-nuo"]
+	path = site/themes/hugo-nuo
+	url = https://github.com/laozhu/hugo-nuo
