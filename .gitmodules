@@ -1,3 +1,3 @@
-[submodule "themes/mistiness"]
-	path = themes/mistiness
+[submodule "mistiness"]
+	path = mistiness
 	url = https://github.com/chrislearn/hugo-theme-mistiness.git
