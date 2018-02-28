@@ -2,7 +2,7 @@
 title: 更新Subversion时自动更新项目相关网站
 author: chrislearn young
 type: post
-date: -001-11-30T00:00:00+00:00
+date: 2008-10-08
 draft: true
 categories:
   - 程序开发
