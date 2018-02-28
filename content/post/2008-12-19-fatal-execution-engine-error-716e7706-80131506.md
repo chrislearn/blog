@@ -6,7 +6,7 @@ date: 2008-12-19T11:44:01+00:00
 
 categories:
   - Asp.net
-  - 'C#'
+  - 'CSharp'
 tags:
   - Asp.net
   - SVN

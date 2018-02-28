@@ -4,7 +4,7 @@ author: chrislearn young
 type: post
 date: 2011-05-28T09:39:39+00:00
 categories:
-  - 'C#'
+  - 'CSharp'
 tags:
   - VS
 
