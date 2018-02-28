@@ -12,6 +12,8 @@ tags:
 
 ---
 发现了一些FlashPlayer 9 与FlashPlayer 10之间的不一样之处，很是怪异。 处理XML： 在Flash 10中将播放器设为Player 9后下面代码执行结果为
+
+<!--more-->
   
 ```
   

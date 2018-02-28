@@ -16,6 +16,7 @@ tags:
 ---
 这年头使用DeepLink的网站越来越多了，像Flash整的网站，本身在一个页面里，DeepLink是必须的，国外的Flash基本都有这个功能，不过。。。国内这样的网站就差多了，基本不加，无法根据URL导航到特定的内容页，相当得不好用呢。
 
+<!--more-->
 而现在Ajax之后，Html5也进入实际的使用了，这样的网站很多也不再没事就刷新页面，白一下屏，多不爽，也都是使用DeepLink了。但是这样的网站想使用Facebook Like Button这样的按钮时，有些个麻烦了。
 
 Facebook Like Button 的代码是这样子的：

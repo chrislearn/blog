@@ -12,6 +12,7 @@ tags:
 ---
 找了一下flash的帮助文档，就是没找到这个方法，不过你确实是可以调用这个方法的。比如：
   
+  <!--more-->
 [as3]
   
 var mc = new MovieClip();

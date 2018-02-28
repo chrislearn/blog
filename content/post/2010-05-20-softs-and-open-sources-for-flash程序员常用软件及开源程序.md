@@ -23,6 +23,8 @@ firebug
 flashtracer,调试时查看Flash调试信息.
   
 webdeveloper,最常用的就是在调试时禁用缓存.
+
+<!--more-->
   
 <a href="http://www.adobe.com/support/flashplayer/downloads.html" target="_blank">flashplayer debugger</a> 配合flashtracer,如果不是这个版本的FlashPlayer的话,无法正常打印调试信息.
 

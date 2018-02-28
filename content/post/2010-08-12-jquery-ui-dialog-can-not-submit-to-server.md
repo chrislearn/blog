@@ -13,7 +13,8 @@ tags:
 
 ---
 Jquery UI 库中的 Dialog 控件里如果存在表单，是无法直接提交到服务器的，因为在jquery.ui.dialog.js文件中（1.8.2版本中大概是在59行的位置）有这样的代码：
-  
+
+<!--more-->
 [javascript]
   
 uiDialog = (self.uiDialog = $(&#8221;))

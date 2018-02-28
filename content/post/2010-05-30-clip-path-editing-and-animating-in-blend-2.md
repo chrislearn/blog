@@ -12,6 +12,7 @@ tags:
 ---
 Silverlight里的遮罩动画不是很好做的，这篇文章有介绍如何制作遮罩及动画，不过还是比不上Flash里的好用，而且个人认为还是有很大的距离呢。
 
+<!--more-->
 原文网址：<a href="http://blogs.msdn.com/b/expression/archive/2008/01/21/clip-path-editing-and-animating-in-blend-2.aspx" target="_blank">http://blogs.msdn.com/b/expression/archive/2008/01/21/clip-path-editing-and-animating-in-blend-2.aspx</a>
 
 <div>

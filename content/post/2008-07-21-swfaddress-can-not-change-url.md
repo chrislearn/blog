@@ -11,7 +11,9 @@ tags:
 
 ---
 刚使用SWFAddress就出现了一个怪异的问题，SWFAddress.setValue(&#8220;XXX&#8221;);调用后，URL怎么也不改变，不知道什么原因，后来发现如果把这句放在SWFAddress.onChange的事件侦听中就是正常的。想不明白，查看他的代码发现了这么一段：
-  
+
+<!--more-->
+
 [as3]
   
 private static function _check():void {

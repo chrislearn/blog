@@ -11,6 +11,7 @@ tags:
 ---
 .FLV files are already the best method for publishing video on the web, and are sure to become even better with the new enhancements in Flash 8. When serving .flv files off of a Windows Server 2003 (or any other Windows server I would imagine) requires setting up the MIME type on the server first (it isn&#8217;t one of the native MIME types on MS servers).
 
+<!--more-->
 You can figure out easily if your server is configured to support .flv files by posting a .flv file on a server and navigating to the URL of that .flv in a browser. If you see a LONG string of garbage on the screen, your server isn&#8217;t set up for .FLVs and needs to have the MIME type set up.
 
 Adding .flv MIME type in IIS

@@ -11,6 +11,7 @@ tags:
 ---
 I keep running into this issue in my multi-project VS.NET solutions.  For some reason, something is locking the dll(s) in the /obj/ folder of library components.  The fix that I have at the moment is as follows:
 
+<!--more-->
   1. Shut down VS.NET
   2. Browse to the project in windows explorer
   3. Delete the /obj/ folder.

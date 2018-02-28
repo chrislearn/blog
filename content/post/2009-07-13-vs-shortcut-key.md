@@ -27,6 +27,8 @@ SHIFT + F4显示项目属性窗口
 CTRL + SHIFT + E显示资源视图
   
 F12 转到定义
+
+<!--more-->
   
 CTRL + F12转到声明
   

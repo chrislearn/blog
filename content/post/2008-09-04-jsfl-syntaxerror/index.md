@@ -15,6 +15,7 @@ tags:
 ---
 前一阵子写了个Flash网站的框架，类似<a href="http://www.gaiaflashframework.com" target="_blank">GaiaFramework</a>，我也想做一个给它有点类似的Flash扩展，让Flash的操作跟简单，省去重复劳动，所以这两天试着写了一下jsfl，一不小心就遇到了一个“SyntaxError:unterminated string literal”的错误。
 
+<!--more-->
 ![syntaxerror.jpg](syntaxerror.jpg)
 
 网上找了一下，也没找到好的解答。后来看了一下代码，终于明白这个错误是如何出现的了。事实上我是在Flash里调用jsfl读取了一个外部的XML文件，然后，试图在扩展面板运行时打印这段XML的内容时出现了这个错误的。

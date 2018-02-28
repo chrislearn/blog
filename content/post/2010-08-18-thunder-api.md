@@ -11,6 +11,7 @@ tags:
 ---
 首先确保电脑已经安装讯雷,打开VS.NET 点击菜单:项目->添加引用->COM->添加对ThunderAgent 1.0
 
+<!--more-->
 Type Library的引用
   
 　　1.创建讯雷调用对象

@@ -16,6 +16,7 @@ tags:
 ---
 之前有安装过Adobe CS5 Master Collection，但是后来发现Flash CS5出现了一个怪异的问题，在将某些CS4版本的文件保存为CS5后出现文件再也打不开的问题，就怀疑是这个版本有问题，于是就卸载了，从官网上重新下载了一个版本来安装，先是下了一个Flash CS5，安装时一直出现：
 
+<!--more-->
 <pre>Exit Code: 7</pre>
 
 这样的错误。没办法，又下了一个Adobe CS5 Master Collection，安装时出现了同样的错误，大体上的错误信息是：

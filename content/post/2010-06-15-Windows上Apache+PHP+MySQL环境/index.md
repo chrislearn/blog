@@ -16,6 +16,7 @@ categories:
   
 <a href="http://www.mysql.com/downloads/mysql/5.1.html" target="_blank">MySQL Community Server 5.1.47</a>
 
+<!--more-->
 先安装Apache
 
 再解压php-5.3.2-nts-Win32-VC9-x86.zip至C:\Program Files\Php。

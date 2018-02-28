@@ -13,6 +13,7 @@ tags:
 ---
 前一阵子在PC下安装了Mac OS X 10.6，结果是成功了，不过过程较复杂。
 
+<!--more-->
 具体过程是按照远景论坛上的帖子进行的，远景上的帖子还是不少的。<a href="http://bbs.pcbeta.com/thread-620048-1-9.html" target="_blank"></a>
 
 <a href="http://bbs.pcbeta.com/thread-620048-1-9.html" target="_blank">无需刻录DMG光盘，教你在VMWare下安装MAC OS X Snow Leopard 10.6</a>

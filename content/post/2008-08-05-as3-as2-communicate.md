@@ -12,6 +12,7 @@ tags:
 ---
 　　AS3与AS2使用了不同的ActionScript 虚拟机（ActionScript Virtual Machine （AVM）），两者相互通信还是比较困难的，要是你在一个现有的Flash 9版本的一个SWF里加载一个Flash 8版本的SWF是可以的，但是，你直接调用里面的方法是不被允许的，要是你trace一下加载进来的内容，你会发现它的类型是AVM1Movie，这个类型的文档里有详细解释：
 
+<!--more-->
 　　AVM1Movie 是表示使用 ActionScript 1.0 或 2.0 的 AVM1 影片剪辑的简单类。 （AVM1 是用于运行 ActionScript 1.0 和 2.0 的 ActionScript 虚拟机。AVM2 是用于运行 ActionScript 3.0 的 ActionScript 虚拟机。） 当 Loader 对象加载 Flash Player 8 或更低版本的 SWF 文件时，会创建 AVM1Movie 对象。 AVM1Movie 对象可以使用继承自 DisplayObject 类的方法和属性（如 `x`、`y`、`width` 等）。 但是，不允许 AVM1Movie 对象和 AVM2 对象之间进行互操作（如调用方法或使用参数）。
 
 　　AVM2 SWF 文件加载 AVM1 SWF 文件具有几个限制：

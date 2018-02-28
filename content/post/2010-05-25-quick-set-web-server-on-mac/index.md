@@ -12,6 +12,7 @@ tags:
 ---
 这不是个详细的设置说明，只是一个快速的简单设置，详细的可以查看以下网址：
 
+<!--more-->
 <a href="http://www.oreillynet.com/pub/ct/49" target="_blank">http://www.oreillynet.com/pub/ct/49</a>
 
 第一步，打开Web服务：

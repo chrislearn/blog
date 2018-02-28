@@ -14,6 +14,7 @@ tags:
   
 _An attempt was made to load a program with an incorrect format. (Exception from HRESULT: 0x8007000B)_”这样的错误。
 
+<!--more-->
 ![iis_error_0x8007000b.png](iis_error_0x8007000b.png)
 
 解决方法：

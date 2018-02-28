@@ -13,6 +13,7 @@ tags:
 
 将要查看路径的目录或者文件直接拖放到Terminal里，就可以显示出文件的完整路径了。
 
+<!--more-->
 其他方法：
 
 <a href="http://www.chrislearn.im/index.php/2010/05/20/get-file-path-on-mac/" target="_blank">MAC下获取文件路径小技巧</a>

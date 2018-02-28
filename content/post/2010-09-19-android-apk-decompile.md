@@ -11,6 +11,7 @@ tags:
 ---
 dex2jar和JD-GUI这2个工具配合学习android太靠谱了,所以放上来给大家共享,开源的好处就是好东西大家一起分享。
 
+<!--more-->
 dex2jar下载地址：http://laichao.googlecode.com/files/dex2jar-0.0.7-SNAPSHOT.zip
   
 JD-GUI下载地址：

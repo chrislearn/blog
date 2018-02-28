@@ -14,6 +14,7 @@ tags:
 ---
 开发中经常要在更新SVN的同时要更新WEB服务器。可以用过Subversion的钩子(Hook)来实现。
 
+<!--more-->
 以下是Windows操作系统下的配置：
 
 在SVN库的hooks目录下面新建post-commit.bat文件，用记事本打开，然后写入如下的代码：

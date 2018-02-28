@@ -13,6 +13,7 @@ tags:
 ---
 Install FFmpeg 2.7 Multimedia Framework and convert multimedia files on Linux Ubuntu Systems. Install FFmpeg 2.7 on Ubuntu 15.04, Ubuntu 14.04 and Derivatives. Below are the Terminal commands to upgrade to FFmpeg 2.7 on Linux.
 
+<!--more-->
 FFmpeg 2.7 is a popular cross-platform solution to record, convert and stream audio and video. It includes libavcodec – the leading audio/video codec library.
 
 #### FFmpeg 2.7 on Ubuntu 15.04

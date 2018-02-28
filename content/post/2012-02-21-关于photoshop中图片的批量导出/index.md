@@ -18,16 +18,10 @@ tags:
   - TexturePacker
 
 ---
-<div id="yass_top_edge_dummy" style="width: 1px; height: 1px; padding: 0px; margin: -11px 0px 0px; border-width: 0px; display: block;">
-</div>
 
-<div id="yass_top_edge" style="background-image: url('chrome://yass/content/edgebgtop.png'); background-attachment: scroll; background-position: center bottom; padding: 0px; margin: 0px 0px 10px -10px; border-width: 0px; height: 0px; display: block; width: 1px;">
-</div>
+最近又遇上了一个项目，需要把Photoshop中的各层全部导成相应的图片，并且要获取相应的图片在Photoshop中的实际位置的信息，用于在网页中重新生成与Photoshop中一样的整图的效果，于是整了一个JSX的脚本，似乎还挺有用处的，可以将photoshop中相应层中的图片先裁切掉多余的空白，之后将它们保存，并且最终生成一个xml文档或者是json的文档将相应的图像位置信息保存在其中。
 
-<p style="margin-top: 10px;">
-  最近又遇上了一个项目，需要把Photoshop中的各层全部导成相应的图片，并且要获取相应的图片在Photoshop中的实际位置的信息，用于在网页中重新生成与Photoshop中一样的整图的效果，于是整了一个JSX的脚本，似乎还挺有用处的，可以将photoshop中相应层中的图片先裁切掉多余的空白，之后将它们保存，并且最终生成一个xml文档或者是json的文档将相应的图像位置信息保存在其中。
-</p>
-
+<!--more-->
 不过还有几点问题：
 
 1. PSD中不能有重名的层，重名的层中的图片会被相互覆盖。

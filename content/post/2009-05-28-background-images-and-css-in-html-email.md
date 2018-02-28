@@ -17,6 +17,7 @@ We’ve noticed a few people having issues with background images in their HTML 
 
 Lots of email applications (especially the browser-based ones, like Yahoo!Mail, Hotmail and Gmail) strip out your , 
 
+<!--more-->
 <head>
   and  tags. It kinda makes sense, if you think about it. They’re displaying your email inside their web page. They don’t want your page settings (like background colors, files, CSS, etc) to interfere with their overall interface. So they strip it all out.</p> 
   

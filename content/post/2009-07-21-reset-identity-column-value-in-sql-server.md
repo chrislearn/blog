@@ -11,6 +11,7 @@ If you are using an identity column on your SQL Server tables, you can set the n
 
 It would be wise to first check what the current identify value is. We can use this command to do so:
 
+<!--more-->
 ```
 DBCC CHECKIDENT (’tablename’, NORESEED)
 ```

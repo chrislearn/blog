@@ -28,7 +28,8 @@ tags:
 9. I agree。 我同意。
   
 10. Not bad． 还不错。
-  
+
+<!--more-->
 11. Not yet． 还没。
   
 12. See you． 再见。

@@ -14,7 +14,8 @@ Some users have problem opening .pbk (vpn) file in windows 7!
 if you have Adobe Pixel Bender then the .pbk files will open using the Adobe Pixel Bender!
   
 if you still want to open pbk files as VPN connection (with Windows Remote Access Phonebook)
-  
+
+<!--more-->
 Please follow the steps below:
 
 1. Launch Notepad.

@@ -16,6 +16,7 @@ Ubuntu中Java进程占CPU100%解决方法：
 
 在命令行下运行这两个命令，用Sun的java代替默认的OpenJDK。
 
+<!--more-->
 ```
 sudo apt-get install sun-java6-bin
   

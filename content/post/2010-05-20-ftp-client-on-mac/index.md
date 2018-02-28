@@ -11,7 +11,8 @@ tags:
 
 ---
 MAC下一个较好用的免费的开源的FTP工具,其他平台下也可以用的,应该比fireftp专业一点的样子.
-  
+
+<!--more-->
 <a href="http://filezilla-project.org/download.php?type=client" target="_blank">http://filezilla-project.org/download.php?type=client</a>
 
 ![mac_filezilla.jpg](mac_filezilla.jpg)

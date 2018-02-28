@@ -16,6 +16,7 @@ tags:
 
 Silverlight中的字体处理实在是没法跟Flash比的，只要随便嵌入字体都会让文件变大很多，在广告对文件大小要求很严格的情况下，这是无法容忍的。
 
+<!--more-->
 Silverlight的XAP文件本质上是一个ZIP压缩文件，并没有作特别的文件格式优化，这点比Flash可差多了，Flash的文件对于导入的图片等资源都可以优化，Silverlight确只是简单地嵌入。
 
 在动画方面Silverlight也明显是落后于Flash的，甚至作一个遮罩都没有Flash那么方便。

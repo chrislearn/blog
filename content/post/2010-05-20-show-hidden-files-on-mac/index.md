@@ -12,12 +12,15 @@ tags:
 ---
 打开Terminal(在Applications/Utilities里找)，这个工具跟windows下的命令行很像的，在里面输入如下命令：
 
-<pre class="brush: text">defaults write com.apple.finder AppleShowAllFiles -bool true
+<!--more-->
+<pre class="brush: text">
+defaults write com.apple.finder AppleShowAllFiles -bool true
 </pre>
 
 然后重启Finder，具体方法是直接在Terminal里输入
 
-<pre class="brush: text">killall Finder
+<pre class="brush: text">
+killall Finder
 </pre>
 
 或者是点击Mac的屏幕最左上的苹果图标

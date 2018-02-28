@@ -11,7 +11,10 @@ tags:
   - Sort
 
 ---
-昨晚发现了一个让我无法理解事情, 看下面的代码:
+昨晚发现了一个让我无法理解事情, Javascript Array sort 在不同浏览器中竟然有不同表现
+
+<!--more-->
+看下面的代码:
 
     var x = [{id:1, val:1}, {id:1, val:32}, {id:1, val:42}];
     x.sort(function(a, b){

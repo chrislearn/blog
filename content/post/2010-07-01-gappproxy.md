@@ -9,6 +9,7 @@ categories:
 ---
 使用的过程主要分为两个部分。第一部分是上传一个文件到google appengine（GAE）,第二部分是建立本地和GAE的连接。
 
+<!--more-->
 1：上传
   
 1.1 创建一个google appengine帐号
