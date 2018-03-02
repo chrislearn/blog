@@ -18,7 +18,7 @@ defaultContentLanguage = "zh-cn"
 title = "Chrislearn's Blog"
 theme = "mistiness"
 disqusShortname = "chrislearn"
-# googleAnalytics = "UA-123-45"
+googleAnalytics = "UA-45799393-1"
 paginate = 7
 canonifyurls = true
 
