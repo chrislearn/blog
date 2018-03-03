@@ -65,11 +65,11 @@ trace(xml);
   
 ```
   
-结果都是 [xml]<site> 
+结果都是 {{<highlight xml>}}<site> 
 
 world
 
-</site>[/xml] 有点晕，不知道是何原因。所以为了防止播放器的不一致，遇到这种appendChild()里面放置字符串的情况还是改用类似下面的写法，算Flash狠了。
+</site>{{</highlight>}} 有点晕，不知道是何原因。所以为了防止播放器的不一致，遇到这种appendChild()里面放置字符串的情况还是改用类似下面的写法，算Flash狠了。
   
 ```
 var xml:XML = <config><site></site></config>;
