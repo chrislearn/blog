@@ -14,7 +14,7 @@ tags:
 
 <!--more-->
 
-{{<highlight actionscript >}}
+{{<highlight actionscript>}}
 private static function _check():void {
   if ((typeof SWFAddress["onInit"] == "function" || \_dispatcher.hasEventListener("init")) && !_init) {
     SWFAddress._setValueInit(_getValue());
@@ -30,7 +30,7 @@ private static function _check():void {
   
 看来是在没有增加“onChange”事件侦听的话是不能正常工作的了。
   
-{{<highlight actionscript >}}
+{{<highlight actionscript>}}
 private static function _initialize():Boolean {
   if (_availability) {
     ExternalInterface.addCallback("getSWFAddressValue", function():String {return _value}); 

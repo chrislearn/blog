@@ -16,65 +16,34 @@ tags:
 <!--more-->
 做了一个简单的例子：
 
-[as3]
-  
-package
-  
-{
-	  
-import flash.display.*;
-	  
-import flash.geom.*;
-	  
-import flash.events.*;
-	  
-import flash.net.*;
-	  
-import flash.utils.*;
-	  
-import flash.filters.*;
+{{<highlight actionscript>}}
+package {
+  import flash.display.*;
+  import flash.geom.*;
+  import flash.events.*;
+  import flash.net.*;
+  import flash.utils.*;
+  import flash.filters.*;
+  public class Test extends Sprite {
+    private static const ZERO_POINT:Point = new Point();
+    private static const MONO_FILTER:ColorMatrixFilter = new ColorMatrixFilter([
+    0.2989, 0.5866, 0.1145, 0, 0,
+    0.2989, 0.5866, 0.1145, 0, 0,
+    0.2989, 0.5866, 0.1145, 0, 0,
+    0, 0, 0, 1, 0
+    ]);
 
-public class Test extends Sprite
-	  
-{
-		  
-private static const ZERO_POINT:Point = new Point();
-		  
-private static const MONO_FILTER:ColorMatrixFilter = new ColorMatrixFilter([
-			  
-0.2989, 0.5866, 0.1145, 0, 0,
-			  
-0.2989, 0.5866, 0.1145, 0, 0,
-			  
-0.2989, 0.5866, 0.1145, 0, 0,
-			  
-0, 0, 0, 1, 0
-		  
-]);
-
-public function Test()
-		  
-{
-			  
-var char:Char = new Char();
-			  
-var inbmp:BitmapData = new BitmapData(char.width, char.height, true, 0x000000);
-			  
-inbmp.draw(char);
-
-var outbmp:BitmapData = new BitmapData(inbmp.width, inbmp.height, false, 0x0);
-			  
-outbmp.applyFilter(inbmp, inbmp.rect, ZERO\_POINT, MONO\_FILTER);
-
-addChild(new Bitmap(outbmp));
-		  
+    public function Test() {
+      var char:Char = new Char();
+      var inbmp:BitmapData = new BitmapData(char.width, char.height, true, 0x000000);
+      inbmp.draw(char);
+      var outbmp:BitmapData = new BitmapData(inbmp.width, inbmp.height, false, 0x0);
+      outbmp.applyFilter(inbmp, inbmp.rect, ZERO_POINT, MONO_FILTER);
+      addChild(new Bitmap(outbmp));
+    }
+  }
 }
-	  
-}
-  
-}
-  
-[/as3]
+{{</highlight>}}
 
 Test.as作为一个Fla文件的文档类，Char是Fla中的一个可显示的对象。看代码的意思是对原始的彩色图片中的RGB色作一个计算：
   

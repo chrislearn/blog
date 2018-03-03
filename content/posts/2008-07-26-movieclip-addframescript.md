@@ -12,14 +12,11 @@ tags:
 ---
 找了一下flash的帮助文档，就是没找到这个方法，不过你确实是可以调用这个方法的。比如：
   
-  <!--more-->
-[as3]
-  
+<!--more-->
+{{<highlight actionscript>}}
 var mc = new MovieClip();
-  
 mc.addFrameScript(1, function(){});
-  
-[/as3]
+{{</highlight>}}
   
 在一个fla的时间轴上增加这个代码测试，嘿嘿，竟然没错，说明确实是有这个方法的，那他的作用是做什么的呢？其实从他的名字一眼就可以看出，就是在MovieClip的相应的帧上添加代码，这个你直接在时间轴上添加代码是一个样的，举个例子来说。mc.addFrameScript(0, fun); 这样的代码的意思就是在mc这个MovieClip的第一帧上添加fun这个名字的方法。这里的0就是指我们在mc时间轴上的第一帧，这个下标是从0开始的。
 
