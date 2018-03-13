@@ -18,11 +18,11 @@ tags:
 
 1\. 这道题的答案是：
 
-&emsp;A.A  &emsp;&emsp;&emsp;&emsp;    B.B   &emsp;&emsp;&emsp;&emsp;   C.C   &emsp;&emsp;&emsp;&emsp;   D.D
+&emsp;A.A  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;    B.B   &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;   C.C   &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;   D.D
 
 2\. 第5题的答案是：
 
-&emsp;A.C   &emsp;&emsp;&emsp;&emsp;   B.D   &emsp;&emsp;&emsp;&emsp;   C.A   &emsp;&emsp;&emsp;&emsp;   D.B
+&emsp;A.C   &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;   B.D   &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;   C.A   &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;   D.B
 
 3\. 以下选项中哪一题的答案与其他三项不同：
 
@@ -34,7 +34,7 @@ tags:
   
 5\. 以下选项中哪一题的答案与本题相同：
 
-&emsp;A.第8题  &emsp;&emsp;&emsp;&emsp;  B. 第4题  &emsp;&emsp;&emsp;&emsp;  C. 第9题  &emsp;&emsp;&emsp;&emsp;  D. 第7题
+&emsp;A.第8题  &emsp;&emsp;&emsp;&emsp;&emsp;  B. 第4题  &emsp;&emsp;&emsp;&emsp;&emsp;  C. 第9题  &emsp;&emsp;&emsp;&emsp;&emsp;  D. 第7题
 
 6\. 以下选项中哪两题的答案与第8题相同： 
 
@@ -42,7 +42,7 @@ tags:
   
 7\. 在此十道题中，被选中次数最少的选项字母为：
 
-&emsp;A.C   &emsp;&emsp;&emsp;&emsp;   B.B   &emsp;&emsp;&emsp;&emsp;   C.A   &emsp;&emsp;&emsp;&emsp;   D.D
+&emsp;A.C   &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;   B.B   &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;   C.A   &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;   D.D
 
 8\. 以下选项中哪一题的答案与第一题的答案在字母中不相邻：
 
@@ -54,7 +54,7 @@ tags:
   
 10\. 在此10道题中，ABCD四个字母出现最多与最少者的差为：
 
-&emsp;A.3   &emsp;&emsp;&emsp;&emsp;   B.2    &emsp;&emsp;&emsp;&emsp;   C.4   &emsp;&emsp;&emsp;&emsp;   D.1
+&emsp;A.3   &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;   B.2    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;   C.4   &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;   D.1
 
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
