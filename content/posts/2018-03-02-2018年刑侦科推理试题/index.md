@@ -15,37 +15,47 @@ tags:
 
 ### 2018年刑侦科推理试题 ###
 单项选择（每题10分，共100分）
-<pre>
+
 1\. 这道题的答案是：
-  A.A      B.B      C.C      D.D
+
+&emsp;A.A  &emsp;&emsp;&emsp;&emsp;    B.B   &emsp;&emsp;&emsp;&emsp;   C.C   &emsp;&emsp;&emsp;&emsp;   D.D
 
 2\. 第5题的答案是：
-  A.C      B.D      C.A      D.B
+
+&emsp;A.C   &emsp;&emsp;&emsp;&emsp;   B.D   &emsp;&emsp;&emsp;&emsp;   C.A   &emsp;&emsp;&emsp;&emsp;   D.B
 
 3\. 以下选项中哪一题的答案与其他三项不同：
-  A.第3题    B.第6题    C.第2题    D.第4题 
+
+&emsp;A.第3题  &emsp;&emsp;&emsp;&emsp;  B.第6题  &emsp;&emsp;&emsp;&emsp;  C.第2题  &emsp;&emsp;&emsp;&emsp;  D.第4题 
   
 4\. 以下选项中哪两项的答案相同：
-  A.第1、5题  B. 第2、7题  C. 第1、9题  D. 第6、10题
+
+&emsp;A.第1、5题 &emsp;&emsp;&emsp; B. 第2、7题 &emsp;&emsp;&emsp; C. 第1、9题 &emsp;&emsp;&emsp; D. 第6、10题
   
 5\. 以下选项中哪一题的答案与本题相同：
-  A.第8题    B. 第4题    C. 第9题    D. 第7题
+
+&emsp;A.第8题  &emsp;&emsp;&emsp;&emsp;  B. 第4题  &emsp;&emsp;&emsp;&emsp;  C. 第9题  &emsp;&emsp;&emsp;&emsp;  D. 第7题
 
 6\. 以下选项中哪两题的答案与第8题相同： 
-  A.第2、4题  B. 第1、6题  C. 第3、10题  D. 第5、9题 
+
+&emsp;A.第2、4题 &emsp;&emsp;&emsp; B. 第1、6题 &emsp;&emsp;&emsp; C. 第3、10题 &emsp;&emsp;&emsp; D. 第5、9题 
   
 7\. 在此十道题中，被选中次数最少的选项字母为：
-  A.C      B.B      C.A      D.D
+
+&emsp;A.C   &emsp;&emsp;&emsp;&emsp;   B.B   &emsp;&emsp;&emsp;&emsp;   C.A   &emsp;&emsp;&emsp;&emsp;   D.D
 
 8\. 以下选项中哪一题的答案与第一题的答案在字母中不相邻：
-  A.第7题     B. 第5题     C. 第2题     D. 第10题
+
+&emsp;A.第7题  &emsp;&emsp;&emsp;&emsp;   B. 第5题  &emsp;&emsp;&emsp;&emsp;   C. 第2题   &emsp;&emsp;&emsp;&emsp;  D. 第10题
   
-9\. 已知“第1题与第6题的答案相同”与“第X题与第5题的答案相同”的真假性相反，那么X为：  
-  A.第6题    B. 第10题    C. 第2题    D. 第9题 
+9\. 已知“第1题与第6题的答案相同”与“第X题与第5题的答案相同”的真假性相反，那么X为：
+
+&emsp;A.第6题  &emsp;&emsp;&emsp;&emsp;  B. 第10题  &emsp;&emsp;&emsp;&emsp;  C. 第2题  &emsp;&emsp;&emsp;&emsp;  D. 第9题 
   
 10\. 在此10道题中，ABCD四个字母出现最多与最少者的差为：
-  A.3      B.2       C.4      D.1
-</pre>
+
+&emsp;A.3   &emsp;&emsp;&emsp;&emsp;   B.2    &emsp;&emsp;&emsp;&emsp;   C.4   &emsp;&emsp;&emsp;&emsp;   D.1
+
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 这是我的推理方式:
