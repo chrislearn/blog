@@ -1,6 +1,6 @@
 ---
 title: "Ubuntu-Server启动错误修复"
-date: 2018-08-30
+date: 2018-08-28
 categories:
   - 程序开发
 tags:
