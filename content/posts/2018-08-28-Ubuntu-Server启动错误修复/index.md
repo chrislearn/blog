@@ -20,53 +20,53 @@ error: file ‘/grub/i386-pc/normal.mod’ not found
 ![rescue-grub.png](rescue-grub.png)
 
 - 安装LVM, 貌似已经默认安装好了.
-  {{<highlight bash>}}
+  <code>
   sudo apt-get install lvm2
-  {{</highlight>}}
+  </code>
 
 - 找到分卷组的名字:
-  {{<highlight bash>}}
+  <code>
   sudo vgdisplay
-  {{</highlight>}}
+  </code>
 
 - 让分卷组可用:
-  {{<highlight bash>}}
+  <code>
   sudo vgchange -ay name-of-vg
-  {{</highlight>}}
+  </code>
 
 - 挂载 root 和 boot 文件系统, name-of-vg 为上一步显示的名称, name-of-root-lv 一般为 root, name-of-boot-partition 我的服务器上是 sda1:
-  {{<highlight bash>}}
+  <code>
   sudo mount /dev/name-of-vg/name-of-root-lv /mnt
   sudo mount /dev/name-of-boot-partition /mnt/boot
-  {{</highlight>}}
+  </code>
   可以通过这些命令确定文件系统:
-  {{<highlight bash>}}
+  <code>
   sudo fdisk -l
   sudo blkid
   df -Th
-  {{</highlight>}}
+  </code>
 
 - 加载关键虚拟文件系统:
-  {{<highlight bash>}}
+  <code>
   for i in /dev /dev/pts /proc /sys /run; do sudo mount -B $i /mnt$i; done
-  {{</highlight>}}
+  </code>
 
 - 更改系统的 root 路径:
-  {{<highlight bash>}}
+  <code>
   sudo chroot /mnt
-  {{</highlight>}}
+  </code>
 
 - 重新安装 GRUB2, 文件系统名不包含分区编号. 这里的 sdX 在我的服务器上是 sda.
-  {{<highlight bash>}}
+  <code>
   grub-install /dev/sdX
-  {{</highlight>}}
+  </code>
 
 - 重新创建 GRUB2 的菜单:
-  {{<highlight bash>}}
+  <code>
   update-grub
-  {{</highlight>}}
+  </code>
 
 - 按 CTRL-D 退出 chroot, 然后重启服务器:
-  {{<highlight bash>}}
+  <code>
   sudo reboot
-  {{</highlight>}}
+  </code>
