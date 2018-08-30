@@ -25,21 +25,26 @@ error: file ‘/grub/i386-pc/normal.mod’ not found
   </code>
 
 - 找到分卷组的名字:
+
   <code>
   sudo vgdisplay
   </code>
 
 - 让分卷组可用:
+
   <code>
   sudo vgchange -ay name-of-vg
   </code>
 
 - 挂载 root 和 boot 文件系统, name-of-vg 为上一步显示的名称, name-of-root-lv 一般为 root, name-of-boot-partition 我的服务器上是 sda1:
+
   <code>
   sudo mount /dev/name-of-vg/name-of-root-lv /mnt
   sudo mount /dev/name-of-boot-partition /mnt/boot
   </code>
+
   可以通过这些命令确定文件系统:
+
   <code>
   sudo fdisk -l
   sudo blkid
@@ -47,26 +52,31 @@ error: file ‘/grub/i386-pc/normal.mod’ not found
   </code>
 
 - 加载关键虚拟文件系统:
+
   <code>
   for i in /dev /dev/pts /proc /sys /run; do sudo mount -B $i /mnt$i; done
   </code>
 
 - 更改系统的 root 路径:
+
   <code>
   sudo chroot /mnt
   </code>
 
 - 重新安装 GRUB2, 文件系统名不包含分区编号. 这里的 sdX 在我的服务器上是 sda.
+
   <code>
   grub-install /dev/sdX
   </code>
 
 - 重新创建 GRUB2 的菜单:
+
   <code>
   update-grub
   </code>
 
 - 按 CTRL-D 退出 chroot, 然后重启服务器:
+
   <code>
   sudo reboot
   </code>
