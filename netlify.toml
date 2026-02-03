@@ -2,6 +2,12 @@
 publish = "public"
 command = "hugo"
 
+[build.environment]
+NODE_VERSION = "24"
+
+[image]
+name = "ubuntu-noble"
+
 [context.production.environment]
 HUGO_VERSION = "0.155.1"
 HUGO_ENV = "production"
