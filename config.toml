@@ -31,7 +31,7 @@ canonifyurls = true
   # category = "categories"
   archive = "archives"
 
-[author]
+[params.author]
   name = "Chrislearn Young"
   bio = "Super bio with markdown support **COOL**"
   job = "Your job title"
