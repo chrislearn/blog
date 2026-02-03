@@ -19,7 +19,8 @@ title = "Chrislearn's Blog"
 theme = "mistiness"
 disqusShortname = "chrislearn"
 googleAnalytics = "UA-45799393-1"
-paginate = 7
+[pagination]
+pagerSize = 7
 canonifyurls = true
 
 [permalinks]
