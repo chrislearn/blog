@@ -155,6 +155,15 @@ $dark-border:   #2a3140;   // hairlines
   #bottom-bar {
     border-top: 1px solid $dark-border;
   }
+  // .share-options-bar is position:fixed; bottom:-100%; height:100% —
+  // its border-top sits exactly on the viewport bottom edge, which is
+  // where the visible "white frame at the bottom of every page" was
+  // coming from. Match its surface and border to the dark palette.
+  .share-options-bar {
+    background-color: $dark-bg-alt;
+    color: $dark-fg;
+    border-top: 1px solid $dark-border;
+  }
 
   #about {
     background: rgba(0, 0, 0, 0.55);
@@ -205,18 +214,6 @@ html[data-theme="dark"] #main {
 html[data-theme="dark"],
 html[data-theme="dark"] body {
   min-height: 100vh;
-  height: auto !important;
-}
-html[data-theme="dark"] #blog {
-  min-height: 100vh;
-  height: auto !important;
-}
-// And the post-page #main container itself: on long posts the
-// content can overflow #main's painted box; let it grow with content
-// so the dark fill always reaches the bottom of the page.
-html[data-theme="dark"] #main {
-  min-height: 100vh;
-  height: auto !important;
 }
 
 @media (prefers-color-scheme: dark) {
