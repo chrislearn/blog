@@ -181,15 +181,29 @@ $dark-border:   #2a3140;   // hairlines
   @include dark-theme;
 }
 
-// Explicit, top-level html/body rules — belt-and-suspenders to make
-// sure the html element itself paints dark and the user-agent body
-// margin can never leak a white frame at the top/bottom edges.
+// Explicit, top-level rules — belt-and-suspenders to make sure every
+// layout container reaches the viewport edges with the dark surface.
+// `#blog` is `position: absolute; height: 100%`, so on tall post pages
+// it ends at viewport-height while the post content overflows below;
+// without min-height: 100vh on body, the user-agent html bg leaked
+// through as a white frame at the bottom (and the body margin at the
+// top). Force everything to cover.
 html[data-theme="dark"],
-html[data-theme="dark"] body {
+html[data-theme="dark"] body,
+html[data-theme="dark"] #blog,
+html[data-theme="dark"] #main {
   background-color: $dark-bg !important;
   margin: 0 !important;
-  padding: 0 !important;
-  min-height: 100%;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+html[data-theme="dark"],
+html[data-theme="dark"] body {
+  min-height: 100vh;
+}
+html[data-theme="dark"] #blog {
+  min-height: 100vh;
+  height: auto;
 }
 
 @media (prefers-color-scheme: dark) {
