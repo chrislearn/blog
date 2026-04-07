@@ -2,30 +2,29 @@
 // Light palette = GitHub Light, dark palette = GitHub Dark.
 // Token class names follow Chroma's short aliases.
 
-// Hugo wraps code in `<div class="highlight"><pre class="chroma">…`.
-// Apply the surface to BOTH so there is never a double-background
-// (outer wrapper one shade, inner pre another).
-.highlight,
-.highlight pre,
-.highlight pre.chroma,
-pre.chroma,
-.chroma {
-    background-color: #f6f8fa;
-    color: #24292e;
-    border-radius: 6px;
-}
+// Hugo wraps fenced code in `<div class="highlight"><pre class="chroma">…`.
+// To avoid a double-background (outer wrapper one shade, inner pre
+// another) the wrapper is left fully transparent and `pre.chroma` is
+// the ONE element that paints the surface.
 .highlight {
+    background: transparent !important;
     margin: 1em 0;
-    overflow: hidden;
-}
-.highlight pre,
-.highlight pre.chroma,
-pre.chroma,
-.chroma {
-    margin: 0;
-    padding: 0.9em 1em;
-    overflow-x: auto;
+    padding: 0;
+    border: 0;
     border-radius: 0;
+}
+.highlight > pre,
+.highlight pre.chroma,
+pre.chroma {
+    background-color: #f6f8fa !important;
+    color: #24292e;
+    margin: 0;
+    padding: 1em 1.1em;
+    border: 0;
+    border-radius: 6px;
+    overflow-x: auto;
+    line-height: 1.55;
+    font-size: 0.92em;
 }
 .chroma {
 
@@ -101,13 +100,13 @@ pre code {
 // Dark mode overrides — applied via the `[data-theme="dark"]` selector
 // (manual choice) or via `[data-theme="auto"]` + system preference.
 @mixin chroma-dark {
-    .highlight,
-    .highlight pre,
+    .highlight { background: transparent !important; }
+    .highlight > pre,
     .highlight pre.chroma,
-    pre.chroma,
-    .chroma {
-        background-color: #11151c;
+    pre.chroma {
+        background-color: #161b22 !important;
         color: #c9d1d9;
+        border: 1px solid #21262d;
     }
     .chroma {
 
