@@ -1,12 +1,16 @@
 <script>
   // No-flash dark mode boot. Runs synchronously before paint so the
-  // initial render uses the user's persisted theme preference.
+  // initial render matches the user's persisted preference, falling
+  // back to the system color scheme. Always resolves to a concrete
+  // 'light' or 'dark' value so the toggle never needs a "warm-up"
+  // click to leave the legacy 'auto' state.
   (function () {
-    try {
-      var t = localStorage.getItem('mistiness-theme') || 'auto';
-      document.documentElement.setAttribute('data-theme', t);
-    } catch (e) {
-      document.documentElement.setAttribute('data-theme', 'auto');
+    var t;
+    try { t = localStorage.getItem('mistiness-theme'); } catch (e) {}
+    if (t !== 'light' && t !== 'dark') {
+      t = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        ? 'dark' : 'light';
     }
+    document.documentElement.setAttribute('data-theme', t);
   })();
 </script>

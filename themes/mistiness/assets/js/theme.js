@@ -1,52 +1,60 @@
-import { $ } from './utils.js';
-
-// Dark mode toggle. Persists the user's choice in localStorage.
-// Three states cycle: auto → light → dark → auto.
+// Dark mode toggle. Persists the user's choice in localStorage and
+// flips between two concrete states (light / dark) so every click
+// produces a visible change. The no-flash boot snippet in
+// head_start.html applies the persisted value before first paint.
 
 const KEY = 'mistiness-theme';
-const ORDER = ['auto', 'light', 'dark'];
+
+function systemPrefersDark() {
+  return typeof window.matchMedia === 'function'
+    && window.matchMedia('(prefers-color-scheme: dark)').matches;
+}
+
+// Resolve whatever is currently in storage (or absent) to a concrete
+// 'light' | 'dark' value, taking the system preference into account
+// for first-time visitors and legacy 'auto' entries.
+function resolvedCurrent() {
+  let stored = null;
+  try { stored = localStorage.getItem(KEY); } catch { /* ignore */ }
+  if (stored === 'light' || stored === 'dark') return stored;
+  return systemPrefersDark() ? 'dark' : 'light';
+}
 
 function apply(theme) {
   document.documentElement.setAttribute('data-theme', theme);
 }
 
-function load() {
-  try { return localStorage.getItem(KEY) || 'auto'; }
-  catch { return 'auto'; }
-}
-
 function save(theme) {
-  try { localStorage.setItem(KEY, theme); }
-  catch { /* ignore */ }
+  try { localStorage.setItem(KEY, theme); } catch { /* ignore */ }
 }
 
-// Apply the persisted theme as early as possible (this module is bundled
-// into the deferred script, so the inline boot snippet in head_start.html
-// handles the no-flash case).
-apply(load());
+// Re-assert the resolved theme as soon as this module evaluates so the
+// DOM attribute is always a concrete value (not 'auto') by the time
+// initThemeToggle runs.
+apply(resolvedCurrent());
 
 export function initThemeToggle() {
   const btns = Array.from(document.querySelectorAll('.theme-toggle'));
   if (!btns.length) return;
 
   function refreshAll() {
-    const theme = load();
+    const theme = resolvedCurrent();
     btns.forEach((btn) => {
       const icon = btn.querySelector('.fa');
       if (icon) {
         icon.classList.remove('fa-sun-o', 'fa-moon-o', 'fa-adjust');
         icon.classList.add(theme === 'dark' ? 'fa-sun-o' : 'fa-moon-o');
       }
-      btn.setAttribute('aria-label', `Theme: ${theme} (click to switch)`);
-      btn.setAttribute('title', `Theme: ${theme}`);
+      const next = theme === 'dark' ? 'light' : 'dark';
+      btn.setAttribute('aria-label', `Switch to ${next} mode`);
+      btn.setAttribute('title', `Switch to ${next} mode`);
     });
   }
 
   refreshAll();
   btns.forEach((btn) => {
     btn.addEventListener('click', () => {
-      const current = load();
-      const next = ORDER[(ORDER.indexOf(current) + 1) % ORDER.length];
+      const next = resolvedCurrent() === 'dark' ? 'light' : 'dark';
       apply(next);
       save(next);
       refreshAll();
