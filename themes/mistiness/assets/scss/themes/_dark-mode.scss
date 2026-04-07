@@ -205,10 +205,18 @@ html[data-theme="dark"] #main {
 html[data-theme="dark"],
 html[data-theme="dark"] body {
   min-height: 100vh;
+  height: auto !important;
 }
 html[data-theme="dark"] #blog {
   min-height: 100vh;
-  height: auto;
+  height: auto !important;
+}
+// And the post-page #main container itself: on long posts the
+// content can overflow #main's painted box; let it grow with content
+// so the dark fill always reaches the bottom of the page.
+html[data-theme="dark"] #main {
+  min-height: 100vh;
+  height: auto !important;
 }
 
 @media (prefers-color-scheme: dark) {
