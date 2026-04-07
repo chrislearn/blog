@@ -20,6 +20,9 @@ $dark-border:   #2a3140;   // hairlines
   background-color: $dark-bg;
   color: $dark-fg;
   color-scheme: dark;
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
 
   // Cover every layout container so no white margin or footer leaks through.
   &,
@@ -32,6 +35,10 @@ $dark-border:   #2a3140;   // hairlines
     background-color: $dark-bg;
     color: $dark-fg;
   }
+  // Kill the default user-agent body margin that was letting the
+  // html-element background bleed through as a thin white frame at
+  // the top and bottom of the page.
+  body { margin: 0; }
   #footer { color: $dark-fg-mute; }
 
   #header {
