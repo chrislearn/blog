@@ -1,41 +1,16 @@
-(function($) {
-  'use strict';
+import { $$ } from './utils.js';
 
-  // Animate tabs of tabbed code blocks
-
-  /**
-   * TabbedCodeBlock
-   * @param {String} elems
-   * @constructor
-   */
-  var TabbedCodeBlock = function(elems) {
-    this.$tabbedCodeBlocs = $(elems);
-  };
-
-  TabbedCodeBlock.prototype = {
-    /**
-     * Run TabbedCodeBlock feature
-     * @return {void}
-     */
-    run: function() {
-      var self = this;
-      self.$tabbedCodeBlocs.find('.tab').click(function() {
-        var $codeblock = $(this).parent().parent().parent();
-        var $tabsContent = $codeblock.find('.tabs-content').children('pre, .highlight');
-        // remove `active` css class on all tabs
-        $(this).siblings().removeClass('active');
-        // add `active` css class on the clicked tab
-        $(this).addClass('active');
-        // hide all tab contents
-        $tabsContent.hide();
-        // show only the right one
-        $tabsContent.eq($(this).index()).show();
-      });
-    }
-  };
-
-  $(document).ready(function() {
-    var tabbedCodeBlocks = new TabbedCodeBlock('.codeblock--tabbed');
-    tabbedCodeBlocks.run();
+// Animate tabs of tabbed code blocks.
+export function initTabbedCodeBlocks() {
+  $$('.codeblock--tabbed .tab').forEach((tab) => {
+    tab.addEventListener('click', () => {
+      const codeblock = tab.closest('.codeblock--tabbed');
+      if (!codeblock) return;
+      const contents = codeblock.querySelectorAll('.tabs-content > pre, .tabs-content > .highlight');
+      Array.from(tab.parentElement.children).forEach((sibling) => sibling.classList.remove('active'));
+      tab.classList.add('active');
+      const index = Array.from(tab.parentElement.children).indexOf(tab);
+      contents.forEach((c, i) => { c.style.display = i === index ? '' : 'none'; });
+    });
   });
-})(jQuery);
+}

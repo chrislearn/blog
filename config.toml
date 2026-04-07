@@ -18,7 +18,7 @@ defaultContentLanguage = "zh-cn"
 title = "Chrislearn's Blog"
 theme = "mistiness"
 disqusShortname = "chrislearn"
-googleAnalytics = "UA-45799393-1"
+# googleAnalytics = "G-XXXXXXX"  # Universal Analytics retired; set a GA4 ID to re-enable.
 [pagination]
 pagerSize = 7
 canonifyurls = true
@@ -30,6 +30,14 @@ canonifyurls = true
   tag = "tags"
   # category = "categories"
   archive = "archives"
+
+[markup.highlight]
+  noClasses = true
+  style = "github-dark"
+  lineNos = false
+  codeFences = true
+  guessSyntax = true
+  tabWidth = 2
 
 [params.author]
   name = "Chrislearn Young"
@@ -104,7 +112,8 @@ canonifyurls = true
 
   # Syntax highlighter, possible choice between: "highlight.js" (recommanded) and "prism.js" (experimental)
   # You can comment it to disable syntax highlighting
-  syntaxHighlighter = "highlight.js"
+  # Syntax highlighting now uses Hugo's built-in Chroma (see [markup.highlight] below).
+  # syntaxHighlighter = "highlight.js"
 
   # Hide sidebar on all article page to let article take full width to improve reading, and enjoy wide images and cover images. (true: enable, false: disable)
   clearReading = true

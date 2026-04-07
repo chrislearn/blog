@@ -1,105 +1,49 @@
-(function($) {
-  'use strict';
+import { $$, debounce } from './utils.js';
 
-  // Resize all images of an image-gallery
+// Resize all images of an image-gallery so they cover their photo box.
+export function initImageGallery() {
+  const images = $$('.photo-box img');
+  if (!images.length) return;
 
-  /**
-   * ImageGallery
-   * @constructor
-   */
-  var ImageGallery = function() {
-    // CSS class located in `source/_css/components/_image-gallery.scss`
-    this.photosBox = '.photo-box';
-    this.$images = $(this.photosBox + ' img');
-  };
-  ImageGallery.prototype = {
+  function resizeImages() {
+    images.forEach((img) => {
+      const link = img.parentElement;
+      const box = link?.parentElement;
+      if (!link || !box) return;
+      const photoBoxWidth = box.offsetWidth;
+      const photoBoxHeight = box.clientHeight;
+      let imageWidth = img.offsetWidth;
+      let imageHeight = img.offsetHeight;
 
-    /**
-     * Run ImageGallery feature
-     * @return {void}
-     */
-    run: function() {
-      var self = this;
+      if (imageHeight < photoBoxHeight) {
+        const ratio = imageWidth / imageHeight;
+        const newWidth = photoBoxHeight * ratio;
+        img.style.height = photoBoxHeight + 'px';
+        img.style.width = newWidth + 'px';
+        link.style.left = '-' + (newWidth / 2 - photoBoxWidth / 2) + 'px';
+      }
 
-      // Resize all images at the loading of the page
-      self.resizeImages();
+      imageWidth = img.offsetWidth;
+      imageHeight = img.offsetHeight;
 
-      // Resize all images when the user is resizing the page
-      $(window).smartresize(function() {
-        self.resizeImages();
-      });
-    },
+      if (imageWidth < photoBoxWidth) {
+        const ratio = imageHeight / imageWidth;
+        const newHeight = photoBoxWidth * ratio;
+        img.style.width = photoBoxWidth + 'px';
+        img.style.height = newHeight + 'px';
+        link.style.top = '-' + (imageHeight / 2 - photoBoxHeight / 2) + 'px';
+      }
 
-    /**
-     * Resize all images of an image gallery
-     * @return {void}
-     */
-    resizeImages: function() {
-      var photoBoxWidth;
-      var photoBoxHeight;
-      var imageWidth;
-      var imageHeight;
-      var imageRatio;
-      var $image;
+      if (imageHeight > photoBoxHeight) {
+        link.style.top = '-' + (imageHeight / 2 - photoBoxHeight / 2) + 'px';
+      }
+    });
+  }
 
-      this.$images.each(function() {
-        $image = $(this);
-        photoBoxWidth = $image.parent().parent().width();
-        photoBoxHeight = $image.parent().parent().innerHeight();
-        imageWidth = $image.width();
-        imageHeight = $image.height();
-
-        // Checks if image height is smaller than his box
-        if (imageHeight < photoBoxHeight) {
-          imageRatio = (imageWidth / imageHeight);
-          // Resize image with the box height
-          $image.css({
-            height: photoBoxHeight,
-            width: (photoBoxHeight * imageRatio)
-          });
-          // Center image in his box
-          $image.parent().css({
-            left: '-' + (((photoBoxHeight * imageRatio) / 2) - (photoBoxWidth / 2)) + 'px'
-          });
-        }
-
-        // Update new values of height and width
-        imageWidth = $image.width();
-        imageHeight = $image.height();
-
-        // Checks if image width is smaller than his box
-        if (imageWidth < photoBoxWidth) {
-          imageRatio = (imageHeight / imageWidth);
-
-          $image.css({
-            width: photoBoxWidth,
-            height: (photoBoxWidth * imageRatio)
-          });
-          // Center image in his box
-          $image.parent().css({
-            top: '-' + (((imageHeight) / 2) - (photoBoxHeight / 2)) + 'px'
-          });
-        }
-
-        // Checks if image height is larger than his box
-        if (imageHeight > photoBoxHeight) {
-          // Center image in his box
-          $image.parent().css({
-            top: '-' + (((imageHeight) / 2) - (photoBoxHeight / 2)) + 'px'
-          });
-        }
-      });
-    }
-  };
-
-  $(document).ready(function() {
-    if ($('.image-gallery').length) {
-      var imageGallery = new ImageGallery();
-
-      // Small timeout to wait the loading of all images.
-      setTimeout(function() {
-        imageGallery.run();
-      }, 500);
-    }
-  });
-})(jQuery);
+  // Wait until images are loaded so dimensions are valid.
+  const ready = images.map((img) =>
+    img.complete ? Promise.resolve() : new Promise((res) => img.addEventListener('load', res, { once: true })),
+  );
+  Promise.all(ready).then(resizeImages);
+  window.addEventListener('resize', debounce(resizeImages, 100));
+}

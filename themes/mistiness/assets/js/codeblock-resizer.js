@@ -1,58 +1,26 @@
-(function($) {
-  'use strict';
+import { $$, debounce } from './utils.js';
 
-  // Resize code blocks to fit the screen width
+// Resize Hugo/Chroma code blocks (figure.highlight) to fit the screen width.
+export function initCodeBlockResizer() {
+  const blocks = $$('figure.highlight');
+  if (!blocks.length) return;
 
-  /**
-   * Code block resizer
-   * @param {String} elem
-   * @constructor
-   */
-  var CodeBlockResizer = function(elem) {
-    this.$codeBlocks = $(elem);
-  };
+  function resize() {
+    blocks.forEach((block) => {
+      const gutter = block.querySelector('.gutter');
+      const code = block.querySelector('.code');
+      if (!code) return;
+      const codeStyle = window.getComputedStyle(code);
+      const codePaddingLeft = parseFloat(codeStyle.paddingLeft) || 0;
+      const codePaddingRight = parseFloat(codeStyle.paddingRight) || 0;
+      const gutterWidth = gutter ? gutter.offsetWidth : 0;
+      const width = block.offsetWidth - gutterWidth - codePaddingLeft - codePaddingRight;
+      code.style.width = width + 'px';
+      const pre = code.querySelector('pre');
+      if (pre) pre.style.width = width + 'px';
+    });
+  }
 
-  CodeBlockResizer.prototype = {
-    /**
-     * Run main feature
-     * @return {void}
-     */
-    run: function() {
-      var self = this;
-      // resize all codeblocks
-      self.resize();
-      // resize codeblocks when window is resized
-      $(window).smartresize(function() {
-        self.resize();
-      });
-    },
-
-    /**
-     * Resize codeblocks
-     * @return {void}
-     */
-    resize: function() {
-      var self = this;
-      self.$codeBlocks.each(function() {
-        var $gutter = $(this).find('.gutter');
-        var $code = $(this).find('.code');
-        // get padding of code div
-        var codePaddings = $code.width() - $code.innerWidth();
-        // code block div width with padding - gutter div with padding + code div padding
-        var width = $(this).outerWidth() - $gutter.outerWidth() + codePaddings;
-        // apply new width
-        $code.css('width', width);
-        $code.children('pre').css('width', width);
-      });
-    }
-  };
-
-  $(document).ready(function() {
-    // register jQuery function to check if an element has an horizontal scroll bar
-    $.fn.hasHorizontalScrollBar = function() {
-      return this.get(0).scrollWidth > this.innerWidth();
-    };
-    var resizer = new CodeBlockResizer('figure.highlight');
-    resizer.run();
-  });
-})(jQuery);
+  resize();
+  window.addEventListener('resize', debounce(resize, 100));
+}

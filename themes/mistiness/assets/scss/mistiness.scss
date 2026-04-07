@@ -41,6 +41,7 @@
     'components/hide',
     'components/highlight-text',
     'components/icon',
+    'components/icons',
     'components/image-gallery',
     'components/link',
     'components/main-content',
@@ -62,6 +63,6 @@
 @import
     'pages/search';
 
-@import
-    'themes/hljs-mistiness',
-    'themes/hljs-custom';
+// Syntax highlighting now uses Hugo's built-in Chroma; legacy
+// highlight.js theme partials live in themes/_hljs-*.scss but are
+// no longer imported.

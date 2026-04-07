@@ -1,123 +1,48 @@
-(function($) {
-  'use strict';
+import { $, $$, fadeIn, fadeOut } from './utils.js';
 
-  // Fade out the blog and let drop the about card of the author and vice versa
+// Show the "about" card when an `#about` link is clicked.
+export function initAboutCard() {
+  const about = $('#about');
+  const aboutCard = $('#about-card');
+  const blog = $('#blog');
+  if (!about || !aboutCard || !blog) return;
 
-  /**
-   * AboutCard
-   * @constructor
-   */
-  var AboutCard = function() {
-    this.$openBtn = $("#sidebar, #header").find("a[href*='#about']");
-    this.$closeBtn = $('#about-btn-close');
-    this.$blog = $('#blog');
-    this.$about = $('#about');
-    this.$aboutCard = $('#about-card');
-  };
+  const openBtns = $$("#sidebar a[href*='#about'], #header a[href*='#about']");
+  const closeBtn = $('#about-btn-close');
 
-  AboutCard.prototype = {
+  function dropAboutCard() {
+    const cardHeight = aboutCard.offsetHeight;
+    let offsetTop = window.innerHeight / 2 - cardHeight / 2 + cardHeight;
+    if (cardHeight + 30 > window.innerHeight) offsetTop = cardHeight;
+    aboutCard.style.top = '-' + cardHeight + 'px';
+    aboutCard.style.display = '';
+    requestAnimationFrame(() => {
+      aboutCard.style.transition = 'top 500ms ease';
+      aboutCard.style.top = offsetTop - cardHeight + 'px';
+    });
+  }
 
-    /**
-     * Run AboutCard feature
-     * @return {void}
-     */
-    run: function() {
-      var self = this;
-      // Detect click on open button
-      self.$openBtn.click(function(e) {
-        e.preventDefault();
-        self.play();
-      });
-      // Detect click on close button
-      self.$closeBtn.click(function(e) {
-        e.preventDefault();
-        self.playBack();
-      });
-    },
+  function liftAboutCard() {
+    aboutCard.style.transition = 'top 500ms ease';
+    aboutCard.style.top = '-' + aboutCard.offsetHeight + 'px';
+    setTimeout(() => {
+      aboutCard.style.display = 'none';
+      aboutCard.removeAttribute('style');
+    }, 500);
+  }
 
-    /**
-     * Play the animation
-     * @return {void}
-     */
-    play: function() {
-      var self = this;
-      // Fade out the blog
-      self.$blog.fadeOut();
-      // Fade in the about card
-      self.$about.fadeIn();
-      // Small timeout to drop the about card after that
-      // the about card fade in and the blog fade out
-      setTimeout(function() {
-        self.dropAboutCard();
-      }, 300);
-    },
+  function play() {
+    fadeOut(blog);
+    fadeIn(about);
+    setTimeout(dropAboutCard, 300);
+  }
 
-    /**
-     * Play back the animation
-     * @return {void}
-     */
-    playBack: function() {
-      var self = this;
-      // Lift the about card
-      self.liftAboutCard();
-      // Fade in the blog after that the about card lifted up
-      setTimeout(function() {
-        self.$blog.fadeIn();
-      }, 500);
-      // Fade out the about card after that the about card lifted up
-      setTimeout(function() {
-        self.$about.fadeOut();
-      }, 500);
-    },
+  function playBack() {
+    liftAboutCard();
+    setTimeout(() => fadeIn(blog), 500);
+    setTimeout(() => fadeOut(about), 500);
+  }
 
-    /**
-     * Slide the card to the middle
-     * @return {void}
-     */
-    dropAboutCard: function() {
-      var self = this;
-      var aboutCardHeight = self.$aboutCard.innerHeight();
-      // default offset from top
-      var offsetTop = ($(window).height() / 2) - (aboutCardHeight / 2) + aboutCardHeight;
-      // if card is longer than the window
-      // scroll is enable
-      // and re-define offsetTop
-      if (aboutCardHeight + 30 > $(window).height()) {
-        offsetTop = aboutCardHeight;
-      }
-      self.$aboutCard
-        .css('top', '0px')
-        .css('top', '-' + aboutCardHeight + 'px')
-        .show(500, function() {
-          self.$aboutCard.animate({
-            top: '+=' + offsetTop + 'px'
-          });
-        });
-    },
-
-    /**
-     * Slide the card to the top
-     * @return {void}
-     */
-    liftAboutCard: function() {
-      var self = this;
-      var aboutCardHeight = self.$aboutCard.innerHeight();
-      // default offset from top
-      var offsetTop = ($(window).height() / 2) - (aboutCardHeight / 2) + aboutCardHeight;
-      if (aboutCardHeight + 30 > $(window).height()) {
-        offsetTop = aboutCardHeight;
-      }
-      self.$aboutCard.animate({
-        top: '-=' + offsetTop + 'px'
-      }, 500, function() {
-        self.$aboutCard.hide();
-        self.$aboutCard.removeAttr('style');
-      });
-    }
-  };
-
-  $(document).ready(function() {
-    var aboutCard = new AboutCard();
-    aboutCard.run();
-  });
-})(jQuery);
+  openBtns.forEach((btn) => btn.addEventListener('click', (e) => { e.preventDefault(); play(); }));
+  closeBtn?.addEventListener('click', (e) => { e.preventDefault(); playBack(); });
+}

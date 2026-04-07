@@ -1,71 +1,28 @@
-(function($) {
-  'use strict';
+import { $ } from './utils.js';
 
-  // Hide the header when the user scrolls down, and show it when he scrolls up
+// Hide the header on scroll-down and show it on scroll-up.
+export function initHeader() {
+  const header = $('#header');
+  if (!header) return;
 
-  /**
-   * Header
-   * @constructor
-   */
-  var Header = function() {
-    this.$header = $('#header');
-    this.headerHeight = this.$header.height();
-    // CSS class located in `source/_css/layout/_header.scss`
-    this.headerUpCSSClass = 'header-up';
-    this.delta = 5;
-    this.lastScrollTop = 0;
-  };
+  const headerHeight = header.offsetHeight;
+  const upClass = 'header-up';
+  const delta = 5;
+  let lastScrollTop = 0;
+  let didScroll = false;
 
-  Header.prototype = {
+  window.addEventListener('scroll', () => { didScroll = true; }, { passive: true });
 
-    /**
-     * Run Header feature
-     * @return {void}
-     */
-    run: function() {
-      var self = this;
-      var didScroll;
-
-      // Detect if the user is scrolling
-      $(window).scroll(function() {
-        didScroll = true;
-      });
-
-      // Check if the user scrolled every 250 milliseconds
-      setInterval(function() {
-        if (didScroll) {
-          self.animate();
-          didScroll = false;
-        }
-      }, 250);
-    },
-
-    /**
-     * Animate the header
-     * @return {void}
-     */
-    animate: function() {
-      var scrollTop = $(window).scrollTop();
-
-      // Check if the user scrolled more than `delta`
-      if (Math.abs(this.lastScrollTop - scrollTop) <= this.delta) {
-        return;
-      }
-
-      // Checks if the user has scrolled enough down and has past the navbar
-      if ((scrollTop > this.lastScrollTop) && (scrollTop > this.headerHeight)) {
-        this.$header.addClass(this.headerUpCSSClass);
-      }
-      else if (scrollTop + $(window).height() < $(document).height()) {
-        this.$header.removeClass(this.headerUpCSSClass);
-      }
-
-      this.lastScrollTop = scrollTop;
+  setInterval(() => {
+    if (!didScroll) return;
+    didScroll = false;
+    const scrollTop = window.scrollY;
+    if (Math.abs(lastScrollTop - scrollTop) <= delta) return;
+    if (scrollTop > lastScrollTop && scrollTop > headerHeight) {
+      header.classList.add(upClass);
+    } else if (scrollTop + window.innerHeight < document.documentElement.scrollHeight) {
+      header.classList.remove(upClass);
     }
-  };
-
-  $(document).ready(function() {
-    var header = new Header();
-    header.run();
-  });
-})(jQuery);
+    lastScrollTop = scrollTop;
+  }, 250);
+}

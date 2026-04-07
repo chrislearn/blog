@@ -1,89 +1,33 @@
-(function($) {
-  'use strict';
+import { $, $$ } from './utils.js';
 
-  // Open and close the share options bar
+// Open and close the share options bar.
+export function initShareOptions() {
+  const bar = $('#share-options-bar');
+  if (!bar) return;
 
-  /**
-   * ShareOptionsBar
-   * @constructor
-   */
-  var ShareOptionsBar = function() {
-    this.$shareOptionsBar = $('#share-options-bar');
-    this.$openBtn = $('.btn-open-shareoptions');
-    this.$closeBtn = $('#btn-close-shareoptions');
-    this.$body = $('body');
-  };
+  const openBtns = $$('.btn-open-shareoptions');
+  const closeBtn = $('#btn-close-shareoptions');
+  const body = document.body;
 
-  ShareOptionsBar.prototype = {
+  function open() {
+    if (bar.classList.contains('opened') || bar.classList.contains('processing')) return;
+    bar.classList.add('processing', 'opened');
+    body.style.overflow = 'hidden';
+    if (closeBtn) closeBtn.style.display = '';
+    setTimeout(() => bar.classList.remove('processing'), 250);
+  }
 
-    /**
-     * Run ShareOptionsBar feature
-     * @return {void}
-     */
-    run: function() {
-      var self = this;
+  function close() {
+    if (!bar.classList.contains('opened') || bar.classList.contains('processing')) return;
+    bar.classList.add('processing');
+    bar.classList.remove('opened');
+    if (closeBtn) closeBtn.style.display = 'none';
+    setTimeout(() => {
+      bar.classList.remove('processing');
+      body.style.overflow = '';
+    }, 250);
+  }
 
-      // Detect the click on the open button
-      self.$openBtn.click(function() {
-        if (!self.$shareOptionsBar.hasClass('opened')) {
-          self.openShareOptions();
-          self.$closeBtn.show();
-        }
-      });
-
-      // Detect the click on the close button
-      self.$closeBtn.click(function() {
-        if (self.$shareOptionsBar.hasClass('opened')) {
-          self.closeShareOptions();
-          self.$closeBtn.hide();
-        }
-      });
-    },
-
-    /**
-     * Open share options bar
-     * @return {void}
-     */
-    openShareOptions: function() {
-      var self = this;
-
-      // Check if the share option bar isn't opened
-      // and prevent multiple click on the open button with `.processing` class
-      if (!self.$shareOptionsBar.hasClass('opened') &&
-        !this.$shareOptionsBar.hasClass('processing')) {
-        // Open the share option bar
-        self.$shareOptionsBar.addClass('processing opened');
-        self.$body.css('overflow', 'hidden');
-        setTimeout(function() {
-          self.$shareOptionsBar.removeClass('processing');
-        }, 250);
-      }
-    },
-
-    /**
-     * Close share options bar
-     * @return {void}
-     */
-    closeShareOptions: function() {
-      var self = this;
-
-      // Check if the share options bar is opened
-      // and prevent multiple click on the close button with `.processing` class
-      if (self.$shareOptionsBar.hasClass('opened') &&
-        !this.$shareOptionsBar.hasClass('processing')) {
-        // Close the share option bar
-        self.$shareOptionsBar.addClass('processing').removeClass('opened');
-
-        setTimeout(function() {
-          self.$shareOptionsBar.removeClass('processing');
-          self.$body.css('overflow', '');
-        }, 250);
-      }
-    }
-  };
-
-  $(document).ready(function() {
-    var shareOptionsBar = new ShareOptionsBar();
-    shareOptionsBar.run();
-  });
-})(jQuery);
+  openBtns.forEach((btn) => btn.addEventListener('click', open));
+  closeBtn?.addEventListener('click', close);
+}
