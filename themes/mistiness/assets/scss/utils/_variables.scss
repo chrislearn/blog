@@ -49,13 +49,13 @@ $font-size: (
 $colors: (
     'success': #4dc657,
     'danger':  #f5311d,
-    'primary': #349ef3,
+    'primary': #0969da,
     'purple':  #cf6ae0,
     'base':    $font-color-base,
     'warning':  #f5aa0a,
     'light':   #9eabb3,
-     // use for tag `a`
-    'link':    #349ef3
+     // GitHub blue — used for links throughout the light theme.
+    'link':    #0969da
 );
 
 // Z-indexes

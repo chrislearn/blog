@@ -41,7 +41,7 @@ canonifyurls = true
 
 [params.author]
   name = "Chrislearn Young"
-  bio = "Rust open-source maintainer. Author of [**Salvo**](https://github.com/salvo-rs/salvo), [**Glory**](https://github.com/glory-rs/glory), and [**Palpo**](https://github.com/palpo-im/palpo). Passionate about Rust, web frameworks, and clean abstractions."
+  bio = "Rust open-source maintainer. Author of [**Salvo**](https://github.com/salvo-rs/salvo) and [**Palpo**](https://github.com/palpo-im/palpo). Passionate about Rust, web frameworks, and clean abstractions."
   job = "Open Source Developer"
   location = "Nanjing, China"
   # Your Gravatar email. Overwrite `author.picture` everywhere in the blog
