@@ -11,7 +11,7 @@ tags:
   - Routing design
 ---
 
-Frameworks like Actix-web, Rocket, and Poem support writing routes like this:
+Frameworks like Actix-web and Rocket support writing routes like this:
 
 ```rust
 #[get("/users/{id}")]

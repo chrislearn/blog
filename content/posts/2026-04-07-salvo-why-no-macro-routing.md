@@ -11,7 +11,7 @@ tags:
   - 路由设计
 ---
 
-Actix-web、Rocket、Poem 等框架支持这样的写法：
+Actix-web、Rocket 等框架支持这样的写法：
 
 ```rust
 #[get("/users/{id}")]
