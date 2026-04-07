@@ -87,6 +87,27 @@ $dark-border:   #2a2f3a;
     }
   }
 
+  #about {
+    background: rgba(0, 0, 0, 0.55);
+  }
+  #about-card {
+    background: $dark-bg-alt !important;
+    color: $dark-fg;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.6);
+    #about-card-name { color: lighten($dark-fg, 10%); }
+    #about-card-bio,
+    #about-card-job,
+    #about-card-location { color: $dark-fg; }
+    #about-btn-close {
+      color: $dark-fg;
+      background: rgba(255, 255, 255, 0.08);
+      &:hover {
+        color: #fff;
+        background: rgba(255, 255, 255, 0.18);
+      }
+    }
+  }
+
   .image-zoom-overlay {
     background: rgba(0, 0, 0, 0.92);
   }
@@ -107,7 +128,7 @@ $dark-border:   #2a2f3a;
 #header .theme-toggle {
   position: absolute;
   top: 12.5px;
-  right: 20px;
+  right: 60px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
