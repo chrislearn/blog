@@ -48,10 +48,23 @@ $dark-border:   #2a3140;   // hairlines
     border-color: $dark-border;
   }
 
+  // Body copy lives inside `.post-content` / `.post-shorten-text`, which
+  // hard-code `color: $colors.base` and so escape the body-level cascade.
+  .post-content,
+  .post-shorten-text,
+  .markdown,
+  .archive-post-title,
+  p, li, td, th, dd, dt {
+    color: $dark-fg;
+  }
+
+  // Headings: only a hair brighter than body so the hierarchy reads
+  // without the jarring pure-white pop.
   .post-title,
   .post-shorten-title,
   h1, h2, h3, h4, h5, h6 {
-    color: lighten($dark-fg, 10%);
+    color: #f1f4fa;
+    font-weight: 600;
   }
 
   a,
