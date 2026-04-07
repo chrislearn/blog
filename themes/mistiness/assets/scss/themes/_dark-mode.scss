@@ -44,6 +44,11 @@ $dark-border:   #2a3140;   // hairlines
   #header {
     background-color: $dark-bg-alt;
     color: $dark-fg;
+    // The base #header rule sets `border: 1px solid #eef2f8` on ALL
+    // sides — that 1px top edge was the visible white frame at the
+    // top of the viewport. Reset all four sides and only keep a
+    // dark hairline along the bottom.
+    border: 0;
     border-bottom: 1px solid $dark-border;
 
     .header-title-link,
