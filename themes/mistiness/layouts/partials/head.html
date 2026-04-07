@@ -43,7 +43,7 @@
       {{ end }}
     {{ end }}
 
-    {{ if .Site.GoogleAnalytics }}
+    {{ if site.Config.Services.GoogleAnalytics.ID }}
       {{ template "_internal/google_analytics.html" . }}
     {{ end }}
     {{ partial "head_end.html" . }}
