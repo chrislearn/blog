@@ -7,9 +7,24 @@
 {{ end }}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
 <!--EXTERNAL SCRIPTS END-->
-<!--SCRIPTS-->
-<script src="/scripts/script-lvys9ksvplkfh3hisn1jvf6ezlzhuguaa25zgwggp3kjud7on0duoqhz0mxo.min.js"></script>
-<!--SCRIPTS END-->
+{{ $jsFiles := slice
+  (resources.Get "js/smartresize.js")
+  (resources.Get "js/sidebar.js")
+  (resources.Get "js/header.js")
+  (resources.Get "js/post-bottom-bar.js")
+  (resources.Get "js/share-options.js")
+  (resources.Get "js/codeblock-resizer.js")
+  (resources.Get "js/tabbed-codeblocks.js")
+  (resources.Get "js/image-gallery.js")
+  (resources.Get "js/fancybox.js")
+  (resources.Get "js/about.js")
+  (resources.Get "js/archives-filter.js")
+  (resources.Get "js/categories-filter.js")
+  (resources.Get "js/tags-filter.js")
+  (resources.Get "js/search-modal.js")
+}}
+{{ $js := $jsFiles | resources.Concat "js/mistiness.js" | minify | fingerprint }}
+<script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}"></script>
 {{ range .Site.Params.customJS }}
   {{ if isset . "src" }}
     <script{{ range $key, $value := . }} {{ if eq $key "src" }}{{ (printf "%s=\"%s\"" $key ($value | absURL)) | safeHTMLAttr }}{{ else }}{{ (printf "%s=\"%s\"" $key (string $value)) | safeHTMLAttr }}{{ end }}{{ end }}></script>
