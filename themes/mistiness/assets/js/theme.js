@@ -26,25 +26,30 @@ function save(theme) {
 apply(load());
 
 export function initThemeToggle() {
-  const btn = $('#theme-toggle');
-  if (!btn) return;
-  const icon = btn.querySelector('.fa');
+  const btns = Array.from(document.querySelectorAll('.theme-toggle'));
+  if (!btns.length) return;
 
-  function refreshIcon() {
-    if (!icon) return;
+  function refreshAll() {
     const theme = load();
-    icon.classList.remove('fa-sun-o', 'fa-moon-o', 'fa-adjust');
-    icon.classList.add(theme === 'dark' ? 'fa-sun-o' : 'fa-moon-o');
-    btn.setAttribute('aria-label', `Theme: ${theme} (click to switch)`);
-    btn.setAttribute('title', `Theme: ${theme}`);
+    btns.forEach((btn) => {
+      const icon = btn.querySelector('.fa');
+      if (icon) {
+        icon.classList.remove('fa-sun-o', 'fa-moon-o', 'fa-adjust');
+        icon.classList.add(theme === 'dark' ? 'fa-sun-o' : 'fa-moon-o');
+      }
+      btn.setAttribute('aria-label', `Theme: ${theme} (click to switch)`);
+      btn.setAttribute('title', `Theme: ${theme}`);
+    });
   }
 
-  refreshIcon();
-  btn.addEventListener('click', () => {
-    const current = load();
-    const next = ORDER[(ORDER.indexOf(current) + 1) % ORDER.length];
-    apply(next);
-    save(next);
-    refreshIcon();
+  refreshAll();
+  btns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const current = load();
+      const next = ORDER[(ORDER.indexOf(current) + 1) % ORDER.length];
+      apply(next);
+      save(next);
+      refreshAll();
+    });
   });
 }
