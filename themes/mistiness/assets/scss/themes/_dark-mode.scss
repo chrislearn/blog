@@ -19,19 +19,40 @@ $dark-border:   #2a3140;   // hairlines
 @mixin dark-theme {
   background-color: $dark-bg;
   color: $dark-fg;
+  color-scheme: dark;
 
+  // Cover every layout container so no white margin or footer leaks through.
+  &,
   body,
-  #main,
   #blog,
-  .main-content {
+  #main,
+  .main-content,
+  #footer,
+  #bottom-bar {
     background-color: $dark-bg;
     color: $dark-fg;
   }
+  #footer { color: $dark-fg-mute; }
 
   #header {
     background-color: $dark-bg-alt;
-    color: $dark-fg-mute;
-    border-bottom-color: $dark-border;
+    color: $dark-fg;
+    border-bottom: 1px solid $dark-border;
+
+    .header-title-link,
+    .header-title-link:hover,
+    .header-title-link:active { color: $dark-fg; }
+  }
+
+  // Hamburger / header icon buttons: transparent on the bar instead of
+  // a stark white tile.
+  .header-icon-btn,
+  #btn-open-sidebar {
+    background: transparent !important;
+    border: 0 !important;
+    color: $dark-fg !important;
+    box-shadow: none !important;
+    &:hover { color: $dark-link !important; }
   }
 
   #sidebar {
@@ -95,14 +116,32 @@ $dark-border:   #2a3140;   // hairlines
   }
 
   .btn,
-  .post-action-btn {
+  .post-action-btn,
+  #bottom-bar .btn,
+  #bottom-bar a,
+  #bottom-bar button {
     background-color: $dark-bg-soft;
     color: $dark-fg;
-    border-color: $dark-border;
+    border: 1px solid $dark-border;
+    border-radius: 6px;
+    box-shadow: none;
 
     &:hover {
       background-color: lighten($dark-bg-soft, 4%);
+      color: $dark-fg;
+      border-color: lighten($dark-border, 8%);
     }
+  }
+  // Disabled / muted buttons.
+  .btn--disabled,
+  .btn--disabled:hover {
+    color: $dark-fg-mute !important;
+    border-color: $dark-border !important;
+    background-color: $dark-bg-alt !important;
+  }
+  // Bottom bar separator line.
+  #bottom-bar {
+    border-top: 1px solid $dark-border;
   }
 
   #about {
