@@ -3,13 +3,13 @@
 // preference, persisted in localStorage) or by the system color scheme
 // when the user has not made an explicit choice (`[data-theme="auto"]`).
 
-$dark-bg:       #0f1419;
-$dark-bg-alt:   #161b22;
+$dark-bg:       #14181f;
+$dark-bg-alt:   #1c2027;
 $dark-bg-code:  #0d1117;
-$dark-fg:       #c9d1d9;
-$dark-fg-mute:  #8b949e;
-$dark-link:     #58a6ff;
-$dark-border:   #30363d;
+$dark-fg:       #d4d4dc;
+$dark-fg-mute:  #9099a6;
+$dark-link:     #6cb4ff;
+$dark-border:   #2a2f3a;
 
 @mixin dark-theme {
   background-color: $dark-bg;
@@ -63,14 +63,6 @@ $dark-border:   #30363d;
     color: $dark-fg-mute;
   }
 
-  pre,
-  code,
-  .highlight,
-  figure.highlight {
-    background-color: $dark-bg-code !important;
-    color: $dark-fg !important;
-  }
-
   blockquote {
     border-left-color: $dark-border;
     color: $dark-fg-mute;
@@ -110,22 +102,28 @@ $dark-border:   #30363d;
   }
 }
 
-// Theme toggle button — sits in the header next to the search icon.
-.theme-toggle {
+// Theme toggle button — anchored inside the header on the right side,
+// just left of the optional avatar / right-link icon.
+#header .theme-toggle {
+  position: absolute;
+  top: 12.5px;
+  right: 20px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 2em;
-  height: 2em;
+  width: 30px;
+  height: 30px;
   background: transparent;
   border: 0;
   color: inherit;
   cursor: pointer;
-  font-size: 1.6rem;
   padding: 0;
-  margin: 0 0.4em;
+  margin: 0;
+  font-size: 1.6rem;
+  line-height: 1;
 
   .fa { font-size: 1.2em; }
 
-  &:hover { opacity: 0.8; }
+  &:hover { opacity: 0.75; }
 }
+
