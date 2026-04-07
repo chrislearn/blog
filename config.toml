@@ -205,10 +205,11 @@ canonifyurls = true
     icon = "fa-google-plus"
     url = "https://plus.google.com/share?url=%s"
 
-  [params.header.rightLink]
-    class = ""
-    icon = ""
-    url = "/#about"
+  # The legacy "about overlay" right-side avatar link is disabled.
+  # [params.header.rightLink]
+  #   class = ""
+  #   icon = ""
+  #   url = "/#about"
 
   # Customize link of author avatar in sidebar
   # [params.sidebar.profile]

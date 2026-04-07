@@ -7,7 +7,6 @@ import { initCodeBlockResizer } from './codeblock-resizer.js';
 import { initTabbedCodeBlocks } from './tabbed-codeblocks.js';
 import { initImageGallery } from './image-gallery.js';
 import { initZoom } from './zoom.js';
-import { initAboutCard } from './about.js';
 import { initArchivesFilter } from './archives-filter.js';
 import { initCategoriesFilter } from './categories-filter.js';
 import { initTagsFilter } from './tags-filter.js';
@@ -22,7 +21,6 @@ ready(() => {
   initTabbedCodeBlocks();
   initImageGallery();
   initZoom();
-  initAboutCard();
   initArchivesFilter();
   initCategoriesFilter();
   initTagsFilter();
