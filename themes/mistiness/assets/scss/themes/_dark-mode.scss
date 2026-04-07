@@ -3,16 +3,18 @@
 // preference, persisted in localStorage) or by the system color scheme
 // when the user has not made an explicit choice (`[data-theme="auto"]`).
 
-// One unified background for body / main / posts so the post column does
-// not visually contrast with its container. The sidebar gets a slightly
-// deeper shade so it still reads as a separate surface.
-$dark-bg:       #1a1f27;
-$dark-bg-alt:   #14181f;
-$dark-bg-code:  #0d1117;
-$dark-fg:       #d4d4dc;
-$dark-fg-mute:  #9099a6;
-$dark-link:     #6cb4ff;
-$dark-border:   #2a2f3a;
+// Cohesive dark palette inspired by GitHub Dark + Tokyo Night.
+// One shared surface for the reading area, a subtly deeper rail for
+// the sidebar/header, and a single accent color for links and the FAB.
+$dark-bg:       #1b1f29;   // main reading surface (body / #main / .post)
+$dark-bg-alt:   #161a22;   // sidebar / header / chrome rail
+$dark-bg-code:  #11151c;   // code block surface
+$dark-bg-soft:  #232834;   // hover, inputs, raised panels
+$dark-fg:       #e2e6ee;   // primary text
+$dark-fg-mute:  #8a93a4;   // secondary text
+$dark-link:     #7aa2f7;   // accent / links
+$dark-link-h:   #9bb8fa;   // accent hover
+$dark-border:   #2a3140;   // hairlines
 
 @mixin dark-theme {
   background-color: $dark-bg;
@@ -56,7 +58,7 @@ $dark-border:   #2a2f3a;
   .post-shorten-title a,
   .post-title a {
     color: $dark-link;
-    &:hover { color: lighten($dark-link, 10%); }
+    &:hover { color: $dark-link-h; }
   }
 
   hr,
@@ -74,19 +76,19 @@ $dark-border:   #2a2f3a;
   input,
   textarea,
   select {
-    background-color: $dark-bg-alt;
+    background-color: $dark-bg-soft;
     color: $dark-fg;
     border-color: $dark-border;
   }
 
   .btn,
   .post-action-btn {
-    background-color: $dark-bg-alt;
+    background-color: $dark-bg-soft;
     color: $dark-fg;
     border-color: $dark-border;
 
     &:hover {
-      background-color: lighten($dark-bg-alt, 6%);
+      background-color: lighten($dark-bg-soft, 4%);
     }
   }
 
@@ -126,54 +128,82 @@ $dark-border:   #2a2f3a;
   }
 }
 
-// Theme toggle button — anchored inside the header on the right side,
-// just left of the optional avatar / right-link icon.
-#header .theme-toggle {
-  position: absolute;
-  top: 12.5px;
-  right: 60px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 30px;
-  height: 30px;
-  background: transparent;
-  border: 0;
-  color: inherit;
-  cursor: pointer;
-  padding: 0;
-  margin: 0;
-  font-size: 1.6rem;
-  line-height: 1;
-
-  .fa { font-size: 1.2em; }
-
-  &:hover { opacity: 0.75; }
-}
-
-// Sidebar theme toggle — visible on the home page and any other layout
-// where the header is hidden on desktop.
-.theme-toggle--sidebar {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+// Floating theme-toggle FAB — pinned to the bottom-right of the
+// viewport on every page, regardless of layout. Always reachable,
+// never collides with header / sidebar / post chrome.
+.theme-toggle--fab {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 1000;
   width: 44px;
   height: 44px;
-  margin: 20px auto 0;
-  background: transparent;
-  border: 0;
-  color: inherit;
-  cursor: pointer;
-  font-size: 1.8rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 50%;
+  background: #ffffff;
+  color: #2c3138;
+  font-size: 1.7rem;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow:
+    0 2px 6px rgba(20, 24, 32, 0.12),
+    0 8px 24px rgba(20, 24, 32, 0.16);
+  transition: transform 0.18s ease, background 0.18s ease,
+              color 0.18s ease, box-shadow 0.18s ease;
 
-  .fa { font-size: 1.4em; }
+  .fa { font-size: 1.25em; }
 
   &:hover {
-    opacity: 0.75;
-    background: rgba(127, 127, 127, 0.12);
+    transform: translateY(-2px);
+    background: #f6f8fa;
+    box-shadow:
+      0 4px 10px rgba(20, 24, 32, 0.16),
+      0 12px 28px rgba(20, 24, 32, 0.22);
+  }
+
+  &:active { transform: translateY(0); }
+  &:focus-visible {
+    outline: 2px solid #7aa2f7;
+    outline-offset: 2px;
   }
 }
 
-#sidebar .theme-toggle--sidebar { display: flex; }
+// Dark-mode skin for the FAB.
+:root[data-theme="dark"] .theme-toggle--fab {
+  background: $dark-bg-soft;
+  color: $dark-fg;
+  border-color: $dark-border;
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.5),
+    0 10px 28px rgba(0, 0, 0, 0.55);
+
+  &:hover {
+    background: lighten($dark-bg-soft, 4%);
+  }
+}
+@media (prefers-color-scheme: dark) {
+  :root[data-theme="auto"] .theme-toggle--fab {
+    background: $dark-bg-soft;
+    color: $dark-fg;
+    border-color: $dark-border;
+    box-shadow:
+      0 2px 6px rgba(0, 0, 0, 0.5),
+      0 10px 28px rgba(0, 0, 0, 0.55);
+  }
+}
+
+// On small screens, lift the FAB clear of any bottom action bars.
+@media (max-width: 767px) {
+  .theme-toggle--fab {
+    right: 16px;
+    bottom: 16px;
+    width: 40px;
+    height: 40px;
+  }
+}
 
