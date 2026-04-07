@@ -33,7 +33,7 @@
     {{ template "_internal/twitter_cards.html" . }}
     {{ template "_internal/schema.html" . }}
 
-    {{ $css := resources.Get "scss/mistiness.scss" | toCSS (dict "transpiler" "dartsass" "outputStyle" "compressed") | fingerprint }}
+    {{ $css := resources.Get "scss/mistiness.scss" | toCSS (dict "outputStyle" "compressed") | fingerprint }}
     <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
     {{ range .Site.Params.customCSS }}
       {{ if isset . "href" }}
