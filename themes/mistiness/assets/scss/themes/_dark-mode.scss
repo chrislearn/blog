@@ -181,6 +181,17 @@ $dark-border:   #2a3140;   // hairlines
   @include dark-theme;
 }
 
+// Explicit, top-level html/body rules — belt-and-suspenders to make
+// sure the html element itself paints dark and the user-agent body
+// margin can never leak a white frame at the top/bottom edges.
+html[data-theme="dark"],
+html[data-theme="dark"] body {
+  background-color: $dark-bg !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  min-height: 100%;
+}
+
 @media (prefers-color-scheme: dark) {
   :root[data-theme="auto"] {
     @include dark-theme;

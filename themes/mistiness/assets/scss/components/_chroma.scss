@@ -153,6 +153,16 @@ pre code {
     code {
         background-color: rgba(110, 118, 129, 0.4);
     }
+    // Critical: keep `<code>` *inside* a code block transparent so it
+    // does not paint a second, brighter rectangle on top of pre.chroma.
+    pre code,
+    pre.chroma code,
+    .chroma code,
+    .highlight code {
+        background: transparent !important;
+        padding: 0;
+        border-radius: 0;
+    }
 }
 
 :root[data-theme="dark"] { @include chroma-dark; }
