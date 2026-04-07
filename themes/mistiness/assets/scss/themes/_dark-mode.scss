@@ -1,0 +1,131 @@
+// Dark mode overrides.
+// Activated either by `[data-theme="dark"]` on `<html>` (manual user
+// preference, persisted in localStorage) or by the system color scheme
+// when the user has not made an explicit choice (`[data-theme="auto"]`).
+
+$dark-bg:       #0f1419;
+$dark-bg-alt:   #161b22;
+$dark-bg-code:  #0d1117;
+$dark-fg:       #c9d1d9;
+$dark-fg-mute:  #8b949e;
+$dark-link:     #58a6ff;
+$dark-border:   #30363d;
+
+@mixin dark-theme {
+  background-color: $dark-bg;
+  color: $dark-fg;
+
+  body,
+  #main,
+  #blog,
+  .main-content {
+    background-color: $dark-bg;
+    color: $dark-fg;
+  }
+
+  #header {
+    background-color: $dark-bg-alt;
+    color: $dark-fg-mute;
+    border-bottom-color: $dark-border;
+  }
+
+  #sidebar {
+    background-color: $dark-bg-alt;
+    color: $dark-fg;
+  }
+
+  .post,
+  .post-shorten,
+  .archive,
+  .post-bottom-bar {
+    background-color: $dark-bg-alt;
+    color: $dark-fg;
+    border-color: $dark-border;
+  }
+
+  .post-title,
+  .post-shorten-title,
+  h1, h2, h3, h4, h5, h6 {
+    color: lighten($dark-fg, 10%);
+  }
+
+  a,
+  .post-shorten-title a,
+  .post-title a {
+    color: $dark-link;
+    &:hover { color: lighten($dark-link, 10%); }
+  }
+
+  hr,
+  .post-meta,
+  .post-footer {
+    border-color: $dark-border;
+    color: $dark-fg-mute;
+  }
+
+  pre,
+  code,
+  .highlight,
+  figure.highlight {
+    background-color: $dark-bg-code !important;
+    color: $dark-fg !important;
+  }
+
+  blockquote {
+    border-left-color: $dark-border;
+    color: $dark-fg-mute;
+  }
+
+  input,
+  textarea,
+  select {
+    background-color: $dark-bg-alt;
+    color: $dark-fg;
+    border-color: $dark-border;
+  }
+
+  .btn,
+  .post-action-btn {
+    background-color: $dark-bg-alt;
+    color: $dark-fg;
+    border-color: $dark-border;
+
+    &:hover {
+      background-color: lighten($dark-bg-alt, 6%);
+    }
+  }
+
+  .image-zoom-overlay {
+    background: rgba(0, 0, 0, 0.92);
+  }
+}
+
+:root[data-theme="dark"] {
+  @include dark-theme;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root[data-theme="auto"] {
+    @include dark-theme;
+  }
+}
+
+// Theme toggle button — sits in the header next to the search icon.
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2em;
+  height: 2em;
+  background: transparent;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+  font-size: 1.6rem;
+  padding: 0;
+  margin: 0 0.4em;
+
+  .fa { font-size: 1.2em; }
+
+  &:hover { opacity: 0.8; }
+}

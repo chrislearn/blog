@@ -1,8 +1,13 @@
 <header id="header" data-behavior="{{ .Scratch.Get "sidebarBehavior" }}">
-  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <button id="btn-open-sidebar" class="header-icon-btn" type="button" aria-label="{{ i18n "global.menu" | default "Menu" }}">
+    <i class="fa fa-lg fa-bars" aria-hidden="true"></i>
+  </button>
   <div class="header-title">
     <a class="header-title-link" href="{{ "/" | relLangURL }}">{{ .Site.Title }}</a>
   </div>
+  <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle dark mode">
+    <i class="fa fa-moon-o" aria-hidden="true"></i>
+  </button>
   {{ with .Site.Params.header.rightLink }}
     {{ if and (in .url ":") (not (in .url (printf "%s" $.Site.BaseURL))) }}
       <a class="{{ if .icon }}header-right-icon {{ else }}header-right-picture {{ end }}{{ with .class }}{{ . }}{{ end }}"

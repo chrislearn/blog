@@ -1,32 +1,27 @@
 {{ $.Scratch.Set "isPost" false }}
-{{ if .IsPage }}
-  {{ if eq .Type "posts" }}
-    {{ $.Scratch.Set "isPost" true }}
-  {{ end }}
+{{ if and .IsPage (eq .Type "posts") }}
+  {{ $.Scratch.Set "isPost" true }}
 {{ end }}
-{{ if and (and ($.Scratch.Get "isPost") (lt .Site.Params.sidebarBehavior 3)) (or (and .Site.Params.clearReading (not .Params.clearReading)) .Params.clearReading) }}
+{{ if and ($.Scratch.Get "isPost") (lt .Site.Params.sidebarBehavior 3) (or (and .Site.Params.clearReading (not .Params.clearReading)) .Params.clearReading) }}
   {{ .Scratch.Set "sidebarBehavior" (add .Site.Params.sidebarBehavior 3) }}
 {{ else }}
   {{ .Scratch.Set "sidebarBehavior" .Site.Params.sidebarBehavior }}
 {{ end }}
-<!-- Get author gravatar email -->
 {{ if .Site.Params.author.gravatarEmail }}
-  {{ .Scratch.Set "gravatarEmail" .Site.Params.author.gravatarEmail }}
-{{ end }}
-{{ if .Scratch.Get "gravatarEmail" }}
-  {{ .Scratch.Set "authorPicture" (printf "//www.gravatar.com/avatar/%s" (urlize (md5 (.Scratch.Get "gravatarEmail")))) }}
+  {{ .Scratch.Set "authorPicture" (printf "//www.gravatar.com/avatar/%s" (urlize (md5 .Site.Params.author.gravatarEmail))) }}
 {{ else if .Site.Params.author.picture }}
   {{ .Scratch.Set "authorPicture" (absURL .Site.Params.author.picture) }}
 {{ end }}
 <!DOCTYPE html>
-<html lang="{{ .Site.LanguageCode }}">
+<html lang="{{ .Site.LanguageCode }}" data-theme="auto">
   <head>
     {{ partial "head_start.html" . }}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="generator" content="Hugo {{ hugo.Version }} with theme Mistiness 0.4.3-BETA">
-    <title>{{ with .Title }}{{ . }}{{ else }}{{ .Site.Title }}{{ end }}</title>
+    <meta name="generator" content="Hugo {{ hugo.Version }} with theme Mistiness (modern)">
+    <title>{{ with .Title }}{{ . }} | {{ end }}{{ .Site.Title }}</title>
     <meta name="author" content="{{ .Site.Params.author.name }}">
+    <meta name="description" content="{{ if .Description }}{{ .Description }}{{ else if .IsPage }}{{ .Summary }}{{ else }}{{ .Site.Params.description }}{{ end }}">
     <meta name="keywords" content="{{ with .Keywords }}{{ delimit . ", " }}{{ end }}{{ if .Site.Params.keywords }}, {{ delimit .Site.Params.keywords ", " }}{{ end }}">
 
     <link rel="icon" href="{{ with .Site.Params.favicon }}{{ . }}{{ else }}/favicon.png{{ end }}">
@@ -34,47 +29,9 @@
       <link rel="alternate" type="application/rss+xml" title="RSS" href="{{ .Permalink }}">
     {{ end }}
 
-    <!-- open graph data -->
-    <meta name="description" content="{{ if .Description }}{{ .Description }}{{ else if .IsPage }}{{ .Summary }}{{ else }}{{ .Site.Params.description }}{{ end }}">
-    <meta property="og:description" content="{{ if .Description }}{{ .Description }}{{ else if .IsPage }}{{ .Summary }}{{ else }}{{ .Site.Params.description }}{{ end }}">
-    <meta property="og:type" content="blog">
-    <meta property="og:title" content="{{ with .Title }}{{ . }}{{ else }}{{ .Site.Title }}{{ end }}">
-    <meta property="og:url" content="{{ .Permalink }}">
-    <meta property="og:site_name" content="{{ .Site.Title }}">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="{{ .Site.Title }}">
-    <meta name="twitter:description" content="{{ if .Description }}{{ .Description }}{{ else if .IsPage }}{{ .Summary }}{{ else }}{{ .Site.Params.description }}{{ end }}">
-    {{ with .Site.Params.author.twitter }}
-      <meta name="twitter:creator" content="@{{ . }}">
-    {{ end }}
-    {{ with .Site.Params.fbAppId }}
-      <meta property="fb:app_id" content="{{ . }}">
-    {{ end }}
-
-    <!-- Facebook admins -->
-    {{ with .Site.Params.fbAdminIds }}
-      {{ range . }}
-          <meta property="fb:admins" content="{{ . }}">
-      {{ end }}
-    {{ end }}
-
-    {{ if .Scratch.Get "gravatarEmail" }}
-      <meta property="og:image" content="//www.gravatar.com/avatar/{{ (md5 (.Scratch.Get "gravatarEmail")) | urlize }}?s=640">
-    {{ else if .Site.Params.author.picture }}
-      <meta property="og:image" content="{{ .Site.Params.author.picture | absURL }}">
-    {{ end }}
-
-    {{ with .Params.thumbnailImage }}
-      <meta property="og:image" content="{{ . | absURL }}">
-    {{ end }}
-    {{ with .Params.coverImage }}
-      <meta property="og:image" content="{{ . | absURL }}">
-    {{ end }}
-    {{ with .Params.gallery }}
-      {{ range . }}
-        <meta property="og:image" content="{{ range first 1 (split . " ") }}{{ . | absURL }}{{ end }}">
-      {{ end }}
-    {{ end }}
+    {{ template "_internal/opengraph.html" . }}
+    {{ template "_internal/twitter_cards.html" . }}
+    {{ template "_internal/schema.html" . }}
 
     {{ $css := resources.Get "scss/mistiness.scss" | toCSS (dict "transpiler" "dartsass" "outputStyle" "compressed") | fingerprint }}
     <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
@@ -86,6 +43,8 @@
       {{ end }}
     {{ end }}
 
-    {{ template "_internal/google_analytics.html" . }}
+    {{ if .Site.GoogleAnalytics }}
+      {{ template "_internal/google_analytics.html" . }}
+    {{ end }}
     {{ partial "head_end.html" . }}
   </head>

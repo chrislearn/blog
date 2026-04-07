@@ -11,6 +11,7 @@ import { initAboutCard } from './about.js';
 import { initArchivesFilter } from './archives-filter.js';
 import { initCategoriesFilter } from './categories-filter.js';
 import { initTagsFilter } from './tags-filter.js';
+import { initThemeToggle } from './theme.js';
 
 ready(() => {
   initSidebar();
@@ -25,4 +26,5 @@ ready(() => {
   initArchivesFilter();
   initCategoriesFilter();
   initTagsFilter();
+  initThemeToggle();
 });

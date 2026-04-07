@@ -1,0 +1,12 @@
+<script>
+  // No-flash dark mode boot. Runs synchronously before paint so the
+  // initial render uses the user's persisted theme preference.
+  (function () {
+    try {
+      var t = localStorage.getItem('mistiness-theme') || 'auto';
+      document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {
+      document.documentElement.setAttribute('data-theme', 'auto');
+    }
+  })();
+</script>

@@ -63,6 +63,7 @@
 @import
     'pages/search';
 
-// Syntax highlighting now uses Hugo's built-in Chroma; legacy
-// highlight.js theme partials live in themes/_hljs-*.scss but are
-// no longer imported.
+// Syntax highlighting now uses Hugo's built-in Chroma; the legacy
+// highlight.js SCSS theme partials have been removed.
+
+@import 'themes/dark-mode';
