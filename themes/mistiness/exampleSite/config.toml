@@ -1,4 +1,4 @@
-# Tranquilpeak
+# Mistiness
 # Version : 0.4.3-BETA
 # Author : Thibaud Leprêtre
 
@@ -12,35 +12,34 @@
 # For developpers, if you modify this theme, put your images in `source/images` folder and
 # use grunt task `build` to synchronize assets
 
-baseURL = "https://www.chrislearn.im/"
-languageCode = "zh-cn"
-defaultContentLanguage = "zh-cn"
-title = "Chrislearn's Blog"
-theme = "mistiness"
-disqusShortname = "chrislearn"
-googleAnalytics = "UA-45799393-1"
-[pagination]
-pagerSize = 7
+baseURL = "https://example.org/"
+languageCode = "en-us"
+defaultContentLanguage = "en-us"
+title = "Hugo mistiness theme"
+theme = "hugo-mistiness-theme"
+disqusShortname = "hugo-mistiness-theme"
+# googleAnalytics = "UA-123-45"
+paginate = 7
 canonifyurls = true
 
 [permalinks]
-  posts = "/:year/:month/:slug/"
+  post = "/:year/:month/:slug/"
 
 [taxonomies]
   tag = "tags"
-  # category = "categories"
+  category = "categories"
   archive = "archives"
 
-[params.author]
-  name = "Chrislearn Young"
+[author]
+  name = "Firstname Lastname"
   bio = "Super bio with markdown support **COOL**"
   job = "Your job title"
-  location = "China"
+  location = "France"
   # Your Gravatar email. Overwrite `author.picture` everywhere in the blog
-  # gravatarEmail = "chrislearn@aliyun.com"
+  gravatarEmail = "thibaud.lepretre@gmail.com"
   # Your profile picture
   # Overwritten by your gravatar image if `author.gravatarEmail` is filled
-  picture = "/images/chris.svg"
+  picture = "https://cdn1.iconfinder.com/data/icons/ninja-things-1/1772/ninja-simple-512.png"
   # Your Twitter username without the @. E.g : thibaudlepretre
   # twitter = "thibaudlepretre"
   # Your google plus profile id. E.g : +ThibaudLepretre or 114625208755123718311
@@ -53,12 +52,12 @@ canonifyurls = true
   name = "Home"
   pre = "<i class=\"sidebar-button-icon fa fa-lg fa-home\"></i>"
   url = "/"
-# [[menu.main]]
-#   weight = 2
-#   identifier = "categories"
-#   name = "Categories"
-#   pre = "<i class=\"sidebar-button-icon fa fa-lg fa-bookmark\"></i>"
-#   url = "/categories"
+[[menu.main]]
+  weight = 2
+  identifier = "categories"
+  name = "Categories"
+  pre = "<i class=\"sidebar-button-icon fa fa-lg fa-bookmark\"></i>"
+  url = "/categories"
 [[menu.main]]
   weight = 3
   identifier = "tags"
@@ -83,7 +82,13 @@ canonifyurls = true
   identifier = "github"
   name = "GitHub"
   pre = "<i class=\"sidebar-button-icon fa fa-lg fa-github\"></i>"
-  url = "https://github.com/chrislearn"
+  url = "https://github.com/kakawait"
+[[menu.links]]
+  weight = 2
+  identifier = "stackoverflow"
+  name = "Stack Overflow"
+  pre = "<i class=\"sidebar-button-icon fa fa-lg fa-stack-overflow\"></i>"
+  url = "https://stackoverflow.com/users/636472/kakawait"
 
 [[menu.misc]]
   weight = 1
@@ -113,7 +118,7 @@ canonifyurls = true
   # If false it will flat categories.
   hierarchicalCategories = true
 
-  description = "Chrislearn's blog"
+  description = "Hugo mistiness theme demo"
 
   # Customization
   # Define the behavior of the sidebar
@@ -171,7 +176,7 @@ canonifyurls = true
   # Custom JS. Put here your custom JS files. They are loaded after the theme JS;
   # they have to be referred from static root. Example
   # [[params.customJS]]
-  #   src = "js/myscript.js"
+  #   src = "scripts/myscript.js"
 
   # Display `Next` on left side of the pagination, and `Prev` on right side one.
   # If you set this value to `true`, these positions swap.
@@ -180,7 +185,7 @@ canonifyurls = true
   # Sharing options
   # Comment and uncomment to enable or disable sharing options
   # If you wanna add a sharing option, read user documentation :
-  # Tranquilpeak configuration > Theme configuration > sharing-options
+  # Mistiness configuration > Theme configuration > sharing-options
   [[params.sharingOptions]]
     name = "Facebook"
     icon = "fa-facebook-official"
@@ -207,4 +212,4 @@ canonifyurls = true
 
   # Customize copyright value "© 2017 <CUSTOMIZATION>. All Rights Reserved"
   # [params.footer]
-  #   copyright = "<a href=\"https://github.com/chrislearn\">chrislearn</a>"
+  #   copyright = "<a href=\"https://github.com/kakawait\">kakawait</a>"

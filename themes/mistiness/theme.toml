@@ -1,0 +1,17 @@
+name = "mistiness"
+license = "GNU General Public License v3.0"
+licenselink = "https://github.com/kakawait/hugo-mistiness-theme/blob/master/LICENSE"
+description = "A gorgeous responsive theme for Hugo blog framework"
+homepage = "https://github.com/kakawait/hugo-mistiness-theme"
+tags = ["blog", "minimal", "responsive", "personal", "customizable", "creative", "fontawesome", "highlight.js"]
+features = ["blog", "themes", "disqus", "minimal", "responsive", "font awesome", "highlight.js"]
+min_version = 0.20
+
+[author]
+  name = "Thibaud Leprêtre"
+  homepage = "https://github.com/kakawait"
+
+[original]
+  name = "mistiness"
+  homepage = "https://github.com/LouisBarranqueiro/hexo-theme-mistiness"
+  repo = "https://github.com/LouisBarranqueiro/hexo-theme-mistiness.git"
