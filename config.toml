@@ -17,7 +17,7 @@ languageCode = "zh-cn"
 defaultContentLanguage = "zh-cn"
 title = "Chrislearn's Blog"
 theme = "mistiness"
-disqusShortname = "chrislearn"
+# Disqus has been retired in favor of Giscus (GitHub Discussions) — see [params.giscus] below.
 # googleAnalytics = "G-XXXXXXX"  # Universal Analytics retired; set a GA4 ID to re-enable.
 [pagination]
 pagerSize = 7
@@ -38,6 +38,25 @@ canonifyurls = true
   codeFences = true
   guessSyntax = true
   tabWidth = 2
+
+# Giscus comment system (https://giscus.app)
+# To activate:
+#   1. Make the target repo public and enable GitHub Discussions on it.
+#   2. Install the giscus GitHub App on that repo: https://github.com/apps/giscus
+#   3. Visit https://giscus.app and fill in the repo / category to get `repoId` and `categoryId`.
+#   4. Paste the generated values below. `theme = "preferred_color_scheme"` auto-switches with OS dark mode.
+[params.giscus]
+  repo = "chrislearn/blog"
+  repoId = ""          # e.g. "R_kgDOxxxxxx"
+  category = "General"
+  categoryId = ""      # e.g. "DIC_kwDOxxxxxxxxxxxx"
+  mapping = "pathname"
+  strict = "0"
+  reactionsEnabled = "1"
+  emitMetadata = "0"
+  inputPosition = "bottom"
+  theme = "preferred_color_scheme"
+  lang = "zh-CN"
 
 [params.author]
   name = "Chrislearn Young"

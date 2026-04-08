@@ -35,7 +35,9 @@
             {{ end }}
             {{ partial "posts/actions.html" . }}
             {{ if not (eq .Params.comments false) }}
-              {{ if .Site.Config.Services.Disqus.Shortname }}
+              {{ if .Site.Params.giscus }}
+                {{ partial "posts/giscus.html" . }}
+              {{ else if .Site.Config.Services.Disqus.Shortname }}
                 {{ partial "posts/disqus.html" . }}
               {{ end }}
             {{ end }}

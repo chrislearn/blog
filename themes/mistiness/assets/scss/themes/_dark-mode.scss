@@ -91,6 +91,86 @@ $dark-border:   #2a3140;   // hairlines
     color: $dark-fg;
   }
 
+  // Tables: the base theme hard-codes a `#f7f8f8` zebra stripe on
+  // `tr:nth-child(2n)` and a mid-grey `#909ba2` `th` bottom border.
+  // In dark mode the bright zebra row reads as a glowing white band
+  // across the table. Re-skin the whole table to the dark palette.
+  table {
+    background: transparent;
+    th {
+      color: $dark-fg;
+      border-bottom: 2px solid $dark-border;
+      background-color: $dark-bg-soft;
+    }
+    td {
+      color: $dark-fg;
+      border-top: 1px solid $dark-border;
+    }
+    tr {
+      background: transparent;
+      &:nth-child(2n) {
+        background-color: rgba(255, 255, 255, 0.03);
+      }
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.05);
+      }
+    }
+  }
+
+  // Post footer: the tag row's separator is hard-coded to `#eef2f8`
+  // and leaks through as a bright hairline above the tag chips.
+  .post-footer-tags {
+    border-bottom: 1px solid $dark-border;
+  }
+
+  // Home/list pages: each post preview ends with a hard-coded
+  // `#eef2f8` separator, which lights up the whole list in dark mode.
+  .postShorten-group .postShorten {
+    border-bottom: 1px solid $dark-border;
+  }
+
+  // Tag chips: the default `a.tag` background is `#fff`. In dark
+  // mode it renders as a bright white pill on a dark post footer.
+  // Reset to a muted raised panel so the chip reads as "button-ish"
+  // without blinding the reader. Colored variants (.tag--primary,
+  // .tag--success, etc.) keep their own borders via the mixin.
+  a.tag,
+  .tag {
+    background: $dark-bg-soft;
+    color: $dark-fg;
+  }
+  // The `.tag--default` variant uses `map-get($colors, light)` for
+  // its text color, which resolves to a near-white hex and looks
+  // washed-out on the dark chip. Nudge it back to primary text.
+  a.tag--default,
+  .tag--default {
+    color: $dark-fg !important;
+    border-color: $dark-border;
+    &:hover {
+      color: $dark-link !important;
+      border-color: $dark-link;
+    }
+  }
+
+  // Modal dialog (rarely visible, but hard-codes `background: white`
+  // on its header/body/footer). Keep it on the same dark panel so
+  // opening it doesn't blast the viewport.
+  .modal-inner,
+  .modal-header,
+  .modal-body,
+  .modal-footer {
+    background: $dark-bg-alt;
+    color: $dark-fg;
+    border-color: $dark-border;
+  }
+
+  // Tooltip uses white text on a dark background by default, so the
+  // color is fine; just make sure the surface matches our palette.
+  .tooltip {
+    background-color: $dark-bg-soft;
+    color: $dark-fg;
+  }
+
   // Headings: only a hair brighter than body so the hierarchy reads
   // without the jarring pure-white pop.
   .post-title,

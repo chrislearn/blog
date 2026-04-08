@@ -11,9 +11,9 @@ tags:
   - Web framework
 ---
 
-In the Rust web framework world, Axum and Salvo are often put side by side. Both are written in Rust, both run on top of `hyper`, and both are async. But once you've built a few real services with each, you'll realize they aren't really competing on the same axis at all — they represent two genuinely different worldviews. This article isn't about putting one above the other (Axum is an excellent framework); it's about showing how a different abstraction layer leads to a noticeably different developer experience and expressive power.
+In the Rust web framework world, [Axum](https://github.com/tokio-rs/axum) and [Salvo](https://github.com/salvo-rs/salvo) are often put side by side. Both are written in Rust, both run on top of [`hyper`](https://github.com/hyperium/hyper), and both are async. But once you've built a few real services with each, you'll realize they aren't really competing on the same axis at all — they represent two genuinely different worldviews. This article isn't about putting one above the other (Axum is an excellent framework); it's about showing how a different abstraction layer leads to a noticeably different developer experience and expressive power.
 
-The Axum version referenced here is **0.8.x**. One quick clarification: Axum 0.8 followed `matchit` 0.8 in switching its path-parameter syntax from `:name` / `*name` to `{name}` / `{*name}`, which on the surface looks almost identical to Salvo's. But the real difference has never been "braces vs. colons" — it's the abstraction model itself.
+The Axum version referenced here is **0.8.x**. One quick clarification: Axum 0.8 followed [`matchit`](https://github.com/ibraheemdev/matchit) 0.8 in switching its path-parameter syntax from `:name` / `*name` to `{name}` / `{*name}`, which on the surface looks almost identical to Salvo's. But the real difference has never been "braces vs. colons" — it's the abstraction model itself.
 
 <!--more-->
 
@@ -21,7 +21,7 @@ The Axum version referenced here is **0.8.x**. One quick clarification: Axum 0.8
 
 ### The Axum / Tower worldview
 
-Axum is a citizen of the Tower ecosystem, and its core abstraction is `tower::Service`:
+Axum is a citizen of the [Tower](https://github.com/tower-rs/tower) ecosystem, and its core abstraction is `tower::Service`:
 
 ```rust
 trait Service<Request> {
@@ -36,7 +36,7 @@ trait Service<Request> {
 
 Middleware is a `Layer`: a factory that wraps `Service<S>` into another `Service<S'>`. The whole request pipeline is built up by nesting types — `Layer<Layer<Layer<Handler>>>`. It's an "onion model meets type algebra": each layer changes the service's type, and the type system proves that the composition is legal.
 
-The upside is a remarkably clean abstraction that interoperates seamlessly with the entire Tower ecosystem (`tower-http`, `tonic`, `hyper-util`, …). The downside is that to write a middleware you have to understand `Service`, `Layer`, `Future`, `Pin`, `poll_ready`, `Box::pin`, associated types, the order semantics of `tower::ServiceBuilder`… The barrier to entry is high.
+The upside is a remarkably clean abstraction that interoperates seamlessly with the entire Tower ecosystem ([`tower-http`](https://github.com/tower-rs/tower-http), [`tonic`](https://github.com/hyperium/tonic), [`hyper-util`](https://github.com/hyperium/hyper-util), …). The downside is that to write a middleware you have to understand `Service`, `Layer`, `Future`, `Pin`, `poll_ready`, `Box::pin`, associated types, the order semantics of `tower::ServiceBuilder`… The barrier to entry is high.
 
 ### The Salvo worldview
 

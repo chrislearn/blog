@@ -11,14 +11,14 @@ tags:
   - Routing design
 ---
 
-Frameworks like Actix-web and Rocket support writing routes like this:
+Frameworks like [Actix-web](https://github.com/actix/actix-web) and [Rocket](https://github.com/rwf2/Rocket) support writing routes like this:
 
 ```rust
 #[get("/users/{id}")]
 async fn show(id: web::Path<i32>) -> impl Responder { /* ... */ }
 ```
 
-Many people think this is "elegant" — an attribute macro sits right above the function, and the path, method, and parameters are all visible at a glance, much like Spring MVC's `@GetMapping` or FastAPI's `@app.get`. Every so often someone files a Salvo issue asking: can we have a `#[get]` too?
+Many people think this is "elegant" — an attribute macro sits right above the function, and the path, method, and parameters are all visible at a glance, much like Spring MVC's `@GetMapping` or FastAPI's `@app.get`. Every so often someone files a [Salvo](https://github.com/salvo-rs/salvo) issue asking: can we have a `#[get]` too?
 
 Salvo deliberately doesn't. This article tries to seriously explain the reasoning behind that decision.
 
@@ -55,7 +55,7 @@ This `routes()` function is itself the entire routing map of the application —
 1. **You can't conditionally register routes.** The most common pattern, `if cfg.enable_admin { router.push(admin_routes()); }`, is either impossible under the macro-routing model or has to be expressed via stiffer mechanisms like `cfg!` or feature flags.
 2. **You can't dynamically assemble routes.** Routes coming from a config file, a database, or a plugin system are simply unreachable for macro routing — the macros expand at compile time.
 3. **You can't loop or apply functional composition over routes.** In Salvo, `for lang in langs { router = router.push(lang_router(lang)); }` is perfectly legal; macro routing doesn't allow it.
-4. **You can't pass routes around as return values.** `fn user_routes() -> Router` is naturally supported by Salvo (and Axum); macro-routing has to invent yet another `scope` / `service` DSL to do "modularization."
+4. **You can't pass routes around as return values.** `fn user_routes() -> Router` is naturally supported by Salvo (and [Axum](https://github.com/tokio-rs/axum)); macro-routing has to invent yet another `scope` / `service` DSL to do "modularization."
 
 In a sentence: macro routing demotes "a route" from a **value** to a **compile-time side effect**. Values can be passed around, composed, computed; side effects can't.
 

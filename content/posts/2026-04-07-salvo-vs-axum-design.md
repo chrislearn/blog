@@ -11,9 +11,9 @@ tags:
   - Web framework
 ---
 
-在 Rust 的 Web 框架江湖里，Axum 与 Salvo 常常被放在一起比较。两者都用 Rust 写成，都跑在 hyper 之上，都支持异步，但只要写过几个真实业务，你就会发现：它们其实是两种完全不同的"世界观"。本文不是要贬低任何一方——Axum 是一个优秀的框架——而是想说明：当抽象层次不同时，开发体验和表达能力会显著不同。
+在 Rust 的 Web 框架江湖里，[Axum](https://github.com/tokio-rs/axum) 与 [Salvo](https://github.com/salvo-rs/salvo) 常常被放在一起比较。两者都用 Rust 写成，都跑在 [hyper](https://github.com/hyperium/hyper) 之上，都支持异步，但只要写过几个真实业务，你就会发现：它们其实是两种完全不同的"世界观"。本文不是要贬低任何一方——Axum 是一个优秀的框架——而是想说明：当抽象层次不同时，开发体验和表达能力会显著不同。
 
-本文对比的 Axum 版本为 *0.8.x*。需要先澄清一点：Axum 0.8 跟随 `matchit` 0.8 把路径参数语法从 `:name` / `*name` 改成了 `{name}` / `{*name}`，看起来与 Salvo 的占位符语法几乎一致。但真正的差异从来不在"花括号还是冒号"这种表层，而在抽象模型本身。
+本文对比的 Axum 版本为 *0.8.x*。需要先澄清一点：Axum 0.8 跟随 [`matchit`](https://github.com/ibraheemdev/matchit) 0.8 把路径参数语法从 `:name` / `*name` 改成了 `{name}` / `{*name}`，看起来与 Salvo 的占位符语法几乎一致。但真正的差异从来不在"花括号还是冒号"这种表层，而在抽象模型本身。
 
 <!--more-->
 
@@ -21,7 +21,7 @@ tags:
 
 ### Axum / Tower 的世界观
 
-Axum 是 Tower 生态的一员，它的核心抽象是 `tower::Service`：
+Axum 是 [Tower](https://github.com/tower-rs/tower) 生态的一员，它的核心抽象是 `tower::Service`：
 
 ```rust
 trait Service<Request> {
@@ -36,7 +36,7 @@ trait Service<Request> {
 
 中间件是 `Layer`：一个把 `Service<S>` 包装成另一个 `Service<S'>` 的工厂。整个请求处理链通过类型层层嵌套出来——`Layer<Layer<Layer<Handler>>>`。这是一种"洋葱模型 + 类型代数"的组合：每一层都改变服务的类型，类型系统替你证明组合是合法的。
 
-优点是：抽象极其干净，可以和整个 Tower 生态（`tower-http`、`tonic`、`hyper-util` 等）无缝复用；缺点是：写一个中间件需要理解 `Service`、`Layer`、`Future`、`Pin`、`poll_ready`、`Box::pin`、关联类型、`tower::ServiceBuilder` 的顺序语义……门槛非常高。
+优点是：抽象极其干净，可以和整个 Tower 生态（[`tower-http`](https://github.com/tower-rs/tower-http)、[`tonic`](https://github.com/hyperium/tonic)、[`hyper-util`](https://github.com/hyperium/hyper-util) 等）无缝复用；缺点是：写一个中间件需要理解 `Service`、`Layer`、`Future`、`Pin`、`poll_ready`、`Box::pin`、关联类型、`tower::ServiceBuilder` 的顺序语义……门槛非常高。
 
 ### Salvo 的世界观
 

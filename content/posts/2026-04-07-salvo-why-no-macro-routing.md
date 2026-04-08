@@ -11,14 +11,14 @@ tags:
   - 路由设计
 ---
 
-Actix-web、Rocket 等框架支持这样的写法：
+[Actix-web](https://github.com/actix/actix-web)、[Rocket](https://github.com/rwf2/Rocket) 等框架支持这样的写法：
 
 ```rust
 #[get("/users/{id}")]
 async fn show(id: web::Path<i32>) -> impl Responder { /* ... */ }
 ```
 
-很多人觉得这"很优雅"——一个属性宏挂在函数上方，路径、方法、参数一目了然，像 Spring MVC 的 `@GetMapping`，像 FastAPI 的 `@app.get`。每隔一段时间，就有人在 Salvo 的 issue 区问：能不能也加一个 `#[get]`？
+很多人觉得这"很优雅"——一个属性宏挂在函数上方，路径、方法、参数一目了然，像 Spring MVC 的 `@GetMapping`，像 FastAPI 的 `@app.get`。每隔一段时间，就有人在 [Salvo](https://github.com/salvo-rs/salvo) 的 issue 区问：能不能也加一个 `#[get]`？
 
 Salvo 故意没有采用。本文想认真解释这个决定背后的原因。
 
@@ -55,7 +55,7 @@ fn routes() -> Router {
 1. **无法条件性地注册路由**。`if cfg.enable_admin { router.push(admin_routes()); }` 这种最常见的需求，在宏路由模型下要么做不到，要么要靠 `cfg!`、`feature flag` 等更僵硬的手段。
 2. **无法动态拼装路由**。从配置文件、数据库、插件系统读出的路由，宏路由通通无能为力——宏在编译期就展开了。
 3. **无法对路由做循环和函数式组合**。Salvo 里 `for lang in langs { router = router.push(lang_router(lang)); }` 是合法的；宏路由不行。
-4. **无法把路由作为返回值传来传去**。`fn user_routes() -> Router` 是 Salvo（以及 Axum）天然支持的；宏路由要做"模块化"必须再发明一套 `scope` / `service` DSL。
+4. **无法把路由作为返回值传来传去**。`fn user_routes() -> Router` 是 Salvo（以及 [Axum](https://github.com/tokio-rs/axum)）天然支持的；宏路由要做"模块化"必须再发明一套 `scope` / `service` DSL。
 
 一句话：宏路由把"路由"从一个**值**降级成了**编译期副作用**。值是可以被传递、组合、计算的；副作用不是。
 
