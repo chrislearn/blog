@@ -13,7 +13,7 @@
   {{ .Scratch.Set "authorPicture" (absURL .Site.Params.author.picture) }}
 {{ end }}
 <!DOCTYPE html>
-<html lang="{{ .Site.LanguageCode }}" data-theme="auto">
+<html lang="{{ .Site.Language.Locale }}" data-theme="auto">
   <head>
     {{ partial "head_start.html" . }}
     <meta charset="UTF-8">

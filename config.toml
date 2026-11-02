@@ -12,8 +12,8 @@
 # For developpers, if you modify this theme, put your images in `source/images` folder and
 # use grunt task `build` to synchronize assets
 
-baseURL = "https://www.chrislearn.im/"
-languageCode = "zh-cn"
+baseURL = "https://chris.veco.id/"
+locale = "zh-CN"
 defaultContentLanguage = "zh-cn"
 title = "Chrislearn's Blog"
 theme = "mistiness"
@@ -21,7 +21,6 @@ theme = "mistiness"
 # googleAnalytics = "G-XXXXXXX"  # Universal Analytics retired; set a GA4 ID to re-enable.
 [pagination]
 pagerSize = 7
-canonifyurls = true
 
 [permalinks]
   posts = "/:year/:month/:slug/"
