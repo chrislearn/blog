@@ -52,8 +52,12 @@ New-Item -ItemType Directory -Force -Path $env:TEMP | Out-Null
 
 ## Deployment
 
-Deploy this repository with [Cloudflare Pages](https://developers.cloudflare.com/pages/framework-guides/deploy-a-hugo-site/)
-using its GitHub integration:
+This blog is automatically deployed by [Cloudflare Pages](https://developers.cloudflare.com/pages/framework-guides/deploy-a-hugo-site/)
+using its GitHub integration. The project is `chrislearn-blog`, with the default
+hostname [chrislearn-blog.pages.dev](https://chrislearn-blog.pages.dev/).
+The previous Netlify project's automatic builds are stopped.
+
+Build configuration:
 
 - Repository: `chrislearn/blog`
 - Production branch: `main`
