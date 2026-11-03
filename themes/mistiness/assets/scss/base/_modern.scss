@@ -44,8 +44,8 @@ body {
   background: var(--page-bg);
   color: var(--text);
   font-size: 1.65rem;
-  line-height: 1.8;
-  letter-spacing: 0;
+  line-height: 1.85;
+  letter-spacing: 0.012em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -72,9 +72,10 @@ a {
 
 h1, h2, h3, h4, h5, h6 {
   color: var(--text-strong);
-  font-weight: 700;
-  line-height: 1.35;
-  letter-spacing: -0.025em;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+  text-wrap: balance;
 }
 
 img {
@@ -176,9 +177,13 @@ img {
 }
 
 .postShorten {
-  .postShorten-title {
-    font-size: clamp(2.35rem, 4vw, 3rem);
-    line-height: 1.35;
+  html & .postShorten-title {
+    margin: 0;
+    overflow: visible;
+    font-size: clamp(2.3rem, 3.2vw, 2.85rem);
+    font-weight: 500;
+    line-height: 1.55;
+    letter-spacing: 0.015em;
 
     a {
       color: var(--text-strong);
@@ -186,6 +191,20 @@ img {
       &:hover {
         color: var(--accent);
         text-decoration: none;
+      }
+    }
+  }
+
+  .postShorten-meta {
+    margin-top: 12px;
+    line-height: 1.75;
+    letter-spacing: 0.025em;
+
+    a {
+      color: var(--text-muted);
+
+      &:hover {
+        color: var(--accent);
       }
     }
   }
@@ -199,15 +218,23 @@ img {
   .postShorten-excerpt,
   .postShorten-content {
     color: var(--text);
-    letter-spacing: 0;
-    line-height: 1.8;
+    letter-spacing: 0.012em;
+    line-height: 1.85;
+  }
+
+  .postShorten-excerpt {
+    margin-top: 20px;
+
+    > p:last-child {
+      margin-top: 16px;
+    }
   }
 
   .postShorten-excerpt_link {
     display: inline-flex;
     align-items: center;
     margin-top: 0;
-    font-weight: 600;
+    font-weight: 500;
   }
 
   .postShorten-thumbnailimg {
@@ -238,17 +265,21 @@ img {
 
   .post-title {
     color: var(--text-strong);
-    font-size: clamp(3rem, 5vw, 4rem);
-    line-height: 1.25;
+    font-size: clamp(2.9rem, 4.5vw, 3.8rem);
+    line-height: 1.45;
+    letter-spacing: 0.012em;
   }
 
   .post-meta {
+    margin-top: 14px;
     color: var(--text-muted);
+    line-height: 1.75;
+    letter-spacing: 0.025em;
   }
 
   .post-content {
     color: var(--text);
-    letter-spacing: 0;
+    letter-spacing: 0.012em;
     line-height: 1.9;
     overflow: visible;
 
