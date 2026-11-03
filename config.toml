@@ -59,9 +59,11 @@ pagerSize = 7
 
 [params.author]
   name = "Chrislearn Young"
-  bio = "Rust open-source maintainer. Author of [**Salvo**](https://github.com/salvo-rs/salvo) and [**Palpo**](https://github.com/palpo-im/palpo). Passionate about Rust, web frameworks, and clean abstractions."
-  job = "Open Source Developer"
+  bio = "全职开源开发者，专注于 Rust、Web 框架与开放协作协议。"
+  job = "Full-time Open Source Developer"
   location = "Nanjing, China"
+  email = "chris@veco.id"
+  wechat = "chrislearn"
   # Your Gravatar email. Overwrite `author.picture` everywhere in the blog
   # gravatarEmail = "chrislearn@aliyun.com"
   # Your profile picture
@@ -102,7 +104,7 @@ pagerSize = 7
   identifier = "about"
   name = "About"
   pre = "<i class=\"sidebar-button-icon fa fa-lg fa-question\"></i>"
-  url = "/#about"
+  url = "/about/"
 
 [[menu.links]]
   weight = 1
@@ -227,11 +229,11 @@ pagerSize = 7
   # [params.header.rightLink]
   #   class = ""
   #   icon = ""
-  #   url = "/#about"
+  #   url = "/about/"
 
   # Customize link of author avatar in sidebar
   # [params.sidebar.profile]
-  #   url = "/#about"
+  #   url = "/about/"
 
   # Customize copyright value "© 2017 <CUSTOMIZATION>. All Rights Reserved"
   # [params.footer]

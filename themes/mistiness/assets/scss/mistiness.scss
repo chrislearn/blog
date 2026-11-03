@@ -1,6 +1,4 @@
-@import
-    'utils/fonts',
-    'utils/variables';
+@import 'utils/variables';
 
 @import
     'utils/mixins/bottom-bar',
@@ -68,3 +66,5 @@
 // highlight.js SCSS theme partials have been removed.
 
 @import 'themes/dark-mode';
+@import 'base/modern';
+@import 'pages/about';

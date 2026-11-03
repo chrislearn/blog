@@ -2,10 +2,10 @@
 // --------------------------------------------
 
 // Font families
-$open-sans:            'Open Sans';
-$open-sans-sans-serif: 'Open Sans', sans-serif;
-$merriweather-serif:   'Merriweather', serif;
-$menlo:                 Menlo, Consolas, monospace;
+$open-sans:            -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+$open-sans-sans-serif: $open-sans;
+$merriweather-serif:   $open-sans;
+$menlo:                'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
 
 $font-family-base: $open-sans-sans-serif;
 

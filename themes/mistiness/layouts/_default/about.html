@@ -1,0 +1,111 @@
+{{ partial "head.html" . }}
+  <body>
+    <div id="blog">
+      {{ partial "header.html" . }}
+      {{ partial "sidebar.html" . }}
+      <main id="main" data-behavior="{{ .Scratch.Get "sidebarBehavior" }}">
+        <div class="about-shell main-content-wrap">
+          <section class="about-hero" aria-labelledby="about-title">
+            {{ with ($.Scratch.Get "authorPicture") }}
+              <img class="about-avatar" src="{{ . }}{{ if in . "//www.gravatar.com/avatar/" }}?s=312{{ end }}" alt="{{ $.Site.Params.author.name }}" width="156" height="156">
+            {{ end }}
+            <div>
+              <p class="about-eyebrow">Full-time Open Source</p>
+              <h1 id="about-title" class="about-title">{{ .Title }}</h1>
+              <div class="about-lead">{{ .Content }}</div>
+              <div class="about-actions">
+                <a class="about-button about-button--primary" href="mailto:{{ .Site.Params.author.email }}">
+                  <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                  联系我
+                </a>
+                <a class="about-button" href="https://github.com/chrislearn" target="_blank" rel="noopener noreferrer">
+                  <i class="fa fa-github" aria-hidden="true"></i>
+                  GitHub
+                </a>
+              </div>
+            </div>
+          </section>
+
+          <section class="about-section" aria-labelledby="projects-title">
+            <div class="about-section-header">
+              <h2 id="projects-title">主要作品</h2>
+              <p>持续维护的开源项目与开放规范。</p>
+            </div>
+            <div class="project-grid">
+              {{ range .Params.projects }}
+                <a class="project-card" href="{{ .url }}" target="_blank" rel="noopener noreferrer">
+                  <div class="project-card__top">
+                    <span class="project-card__icon"><i class="fa fa-github" aria-hidden="true"></i></span>
+                    <span class="project-card__arrow"><i class="fa fa-external-link" aria-hidden="true"></i></span>
+                  </div>
+                  <h3>{{ .name }}</h3>
+                  <span class="project-card__repo">{{ .repo }}</span>
+                  <p>{{ .description }}</p>
+                </a>
+              {{ end }}
+            </div>
+          </section>
+
+          <section class="about-section" aria-labelledby="contact-title">
+            <div class="about-section-header">
+              <h2 id="contact-title">联系方式</h2>
+              <p>欢迎交流开源、Rust 与项目合作。</p>
+            </div>
+            <div class="contact-grid">
+              <a class="contact-card" href="mailto:{{ .Site.Params.author.email }}">
+                <span class="contact-card__icon"><i class="fa fa-envelope-o" aria-hidden="true"></i></span>
+                <span>
+                  <span class="contact-card__label">邮箱</span>
+                  <span class="contact-card__value">{{ .Site.Params.author.email }}</span>
+                </span>
+              </a>
+              <div class="contact-card">
+                <span class="contact-card__icon"><i class="fa fa-weixin" aria-hidden="true"></i></span>
+                <span>
+                  <span class="contact-card__label">微信</span>
+                  <span class="contact-card__value">{{ .Site.Params.author.wechat }}</span>
+                </span>
+              </div>
+              <a class="contact-card" href="https://github.com/chrislearn" target="_blank" rel="noopener noreferrer">
+                <span class="contact-card__icon"><i class="fa fa-github" aria-hidden="true"></i></span>
+                <span>
+                  <span class="contact-card__label">GitHub</span>
+                  <span class="contact-card__value">@chrislearn</span>
+                </span>
+              </a>
+            </div>
+          </section>
+
+          <section class="about-section" aria-labelledby="support-title">
+            <div class="about-section-header">
+              <h2 id="support-title">赞助与支持</h2>
+            </div>
+            <div class="support-panel">
+              <p>如果这些项目对你有帮助，欢迎请我喝杯咖啡。你的支持会帮助我持续投入全职开源开发与维护。</p>
+              <div class="about-actions">
+                <a class="about-button about-button--primary" href="https://ko-fi.com/chrislearn" target="_blank" rel="noopener noreferrer">
+                  <i class="fa fa-coffee" aria-hidden="true"></i>
+                  在 Ko-fi 上支持我
+                </a>
+              </div>
+              <div class="donation-grid">
+                <figure class="donation-card">
+                  <img src="{{ "images/alipay.png" | relURL }}" alt="支付宝收款码" width="370" height="470" loading="lazy">
+                  <figcaption>支付宝</figcaption>
+                </figure>
+                <figure class="donation-card">
+                  <img src="{{ "images/weixin.png" | relURL }}" alt="微信收款码" width="370" height="470" loading="lazy">
+                  <figcaption>微信支付</figcaption>
+                </figure>
+              </div>
+            </div>
+          </section>
+
+          <div class="about-back">
+            <a href="{{ "" | relURL }}"><i class="fa fa-arrow-left" aria-hidden="true"></i> 返回博客</a>
+          </div>
+        </div>
+        {{ partial "footer.html" . }}
+      </main>
+    </div>
+{{ partial "foot.html" . }}

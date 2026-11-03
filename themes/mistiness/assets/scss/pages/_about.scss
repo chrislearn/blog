@@ -1,0 +1,339 @@
+.about-shell {
+  max-width: 1040px;
+  padding-top: clamp(28px, 5vw, 64px);
+}
+
+.about-hero {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: clamp(24px, 5vw, 48px);
+  align-items: center;
+  padding: clamp(28px, 6vw, 56px);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  background: linear-gradient(135deg, var(--surface), var(--accent-soft));
+  box-shadow: var(--shadow-sm);
+}
+
+.about-avatar {
+  width: clamp(112px, 16vw, 156px);
+  height: clamp(112px, 16vw, 156px);
+  margin: 0;
+  border: 4px solid var(--surface);
+  border-radius: 32px;
+  box-shadow: var(--shadow-md);
+}
+
+.about-eyebrow {
+  margin: 0 0 8px;
+  color: var(--accent);
+  font-size: 1.25rem;
+  font-weight: 750;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.about-title {
+  margin: 0;
+  font-size: clamp(3.4rem, 7vw, 5rem);
+  line-height: 1.15;
+}
+
+.about-lead {
+  max-width: 680px;
+  margin-top: 18px;
+  color: var(--text);
+  font-size: 1.75rem;
+  line-height: 1.85;
+
+  p {
+    margin: 0;
+  }
+}
+
+.about-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 26px;
+}
+
+.about-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 46px;
+  padding: 10px 20px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface-raised);
+  color: var(--text-strong);
+  font-size: 1.5rem;
+  font-weight: 650;
+  line-height: 1.4;
+  text-decoration: none;
+
+  &:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    text-decoration: none;
+    transform: translateY(-1px);
+  }
+}
+
+:root .about-button.about-button--primary {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #ffffff;
+
+  &:hover {
+    border-color: var(--accent-strong);
+    background: var(--accent-strong);
+    color: #ffffff;
+  }
+}
+
+.about-section {
+  margin-top: clamp(36px, 6vw, 56px);
+}
+
+.about-section-header {
+  margin-bottom: 20px;
+
+  h2 {
+    margin: 0;
+    font-size: clamp(2.5rem, 4vw, 3.2rem);
+  }
+
+  p {
+    margin: 8px 0 0;
+    color: var(--text-muted);
+  }
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.project-card {
+  display: flex;
+  min-height: 250px;
+  flex-direction: column;
+  padding: 26px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+  color: var(--text);
+  text-decoration: none;
+
+  &:hover {
+    border-color: var(--accent);
+    box-shadow: var(--shadow-md);
+    color: var(--text);
+    text-decoration: none;
+    transform: translateY(-3px);
+  }
+}
+
+.project-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.project-card__icon {
+  display: inline-flex;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 2.2rem;
+}
+
+.project-card__arrow {
+  color: var(--text-muted);
+  transition: transform 160ms ease, color 160ms ease;
+}
+
+.project-card:hover .project-card__arrow {
+  color: var(--accent);
+  transform: translate(2px, -2px);
+}
+
+.project-card h3 {
+  margin: 22px 0 4px;
+  font-size: 2.2rem;
+}
+
+.project-card__repo {
+  color: var(--text-muted);
+  font-family: map-get($font-families, 'code');
+  font-size: 1.25rem;
+  overflow-wrap: anywhere;
+}
+
+.project-card p {
+  margin: 18px 0 0;
+  color: var(--text);
+  font-size: 1.5rem;
+  line-height: 1.75;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.contact-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--surface);
+  color: var(--text);
+  text-decoration: none;
+}
+
+.contact-card__icon {
+  display: inline-flex;
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 1.9rem;
+}
+
+.contact-card__label,
+.contact-card__value {
+  display: block;
+}
+
+.contact-card__label {
+  color: var(--text-muted);
+  font-size: 1.25rem;
+}
+
+.contact-card__value {
+  color: var(--text-strong);
+  font-size: 1.5rem;
+  font-weight: 650;
+  overflow-wrap: anywhere;
+}
+
+a.contact-card:hover {
+  border-color: var(--accent);
+  color: var(--text);
+  text-decoration: none;
+  transform: translateY(-2px);
+}
+
+.support-panel {
+  padding: clamp(26px, 5vw, 42px);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+}
+
+.support-panel > p {
+  max-width: 620px;
+  margin: 0 auto 24px;
+  color: var(--text-muted);
+}
+
+.support-panel .about-actions {
+  justify-content: center;
+  margin: 0 0 30px;
+}
+
+.donation-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+  margin: 0;
+}
+
+.donation-card {
+  width: 100%;
+  max-width: 220px;
+  margin: 0;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--page-bg);
+
+  img {
+    display: block;
+    width: 100%;
+    border-radius: 10px;
+  }
+
+  figcaption {
+    margin-top: 12px;
+    color: var(--text-strong);
+    font-size: 1.45rem;
+    font-weight: 650;
+  }
+}
+
+.about-back {
+  margin-top: 36px;
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .project-grid,
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-card {
+    min-height: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .about-shell {
+    padding-top: 12px;
+  }
+
+  .about-hero {
+    grid-template-columns: 1fr;
+    border-radius: 18px;
+    text-align: center;
+  }
+
+  .about-avatar {
+    margin: 0 auto;
+    border-radius: 26px;
+  }
+
+  .about-lead {
+    font-size: 1.65rem;
+  }
+
+  .about-actions {
+    justify-content: center;
+  }
+
+  .contact-card {
+    text-align: left;
+  }
+}
